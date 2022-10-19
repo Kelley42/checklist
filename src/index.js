@@ -1,1 +1,3 @@
-console.log("hi")
+import { todos } from './todo';
+
+todos();
