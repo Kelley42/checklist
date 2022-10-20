@@ -66,6 +66,20 @@ nav li {
     font-size: x-large;
 }
 
+#projects-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#projects-container p{
+    font-size: x-large;
+}
+
+#navbar-bottom ul{
+    padding: 0 20px;
+    border: solid black;
+}
+
 #content {
     display: flex;
     flex-direction: column;
