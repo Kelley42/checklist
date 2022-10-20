@@ -18,15 +18,9 @@ const todos = () => {
     content.appendChild(todoItemsContainer);
 };
 
-// function showTodos(todoList) {
-//     for (const item in todoList) {
-//         console.log(todoList[item][4])
-//     }
-// }
-
 function showTodos(todoList) {
-    const fullList = document.createElement("div");
-    fullList.classList.add("full-list");
+    const todoListContainer = document.createElement("div");
+    todoListContainer.classList.add("todo-list-container");
 
     for (const item in todoList) {
         const todoItem = document.createElement("div");
@@ -53,9 +47,9 @@ function showTodos(todoList) {
         done.innerHTML = todoList[item][4];
 
         todoItem.append(title, description, date, priority, done);
-        fullList.appendChild(todoItem);
+        todoListContainer.appendChild(todoItem);
     }
-    return fullList;
+    return todoListContainer;
 };
 
 export { todos };

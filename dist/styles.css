@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --tomato: #F9684A;
+    --jasmine: #FDD581;
+    --pewter-blue: #7CADB1;
+    --white-chocolate: #EBE4DB;
+    --bone: #E1D6C5;
+    --cinereous: #9D8887;
+}
+
+html {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    font-family: Roboto, Courier, serif;
+    font-size: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 40px 1fr 20px;
+}
+
+header, footer {
+    background-color: var(--pewter-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    border: solid black;
+}
+
+nav {
+    padding: 35px 60px;
+    border: solid blue;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: var(--jasmine);
+}
+
+nav li {
+    list-style: none;
+}
+
+.navbar {
+    border: solid green;
+}
+
+#navbar-bottom-heading {
+    font-size: x-large;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    background-color: var(--bone);
+}
+
+.todo-header {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.menu-items-container {
+    border: solid black;
+}
+
+.todo-list-container {
+    border: solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
