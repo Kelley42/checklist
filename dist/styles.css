@@ -50,6 +50,7 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     position: relative;
+    z-index: 1;
 }
 
 header h1{
@@ -73,17 +74,32 @@ header img{
 
 main {
     display: flex;
-    border: solid black;
+    position: relative;
 }
 
 nav {
-    padding: 35px 60px;
+    position: absolute;
+    height: 90%;
+    padding: 30px 20px;
     border: solid blue;
     display: flex;
     flex-direction: column;
     gap: 30px;
     background-color: var(--bone);
+    /* transition: transform 1s ease-out;
+    transform: left(0px); */
+    animation: slide-in 0.5s ease;
 }
+
+@keyframes slide-in {
+    0% {
+      transform: translateY(-1000px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
 
 nav li {
     list-style: none;
@@ -116,9 +132,10 @@ nav li {
 }
 
 #content {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 20px;
     background-color: var(--white-chocolate);
 }
 
