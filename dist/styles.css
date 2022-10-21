@@ -51,11 +51,12 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    background-color: var(--jasmine);
+    background-color: var(--bone);
 }
 
 nav li {
     list-style: none;
+    font-size: large;
 }
 
 .navbar {
@@ -71,8 +72,11 @@ nav li {
     justify-content: space-between;
 }
 
-#projects-container p{
+#add-project{
     font-size: x-large;
+    background: var(--bone);
+    padding: 0 10px;
+    border: none;
 }
 
 #navbar-bottom ul{
@@ -84,7 +88,7 @@ nav li {
     display: flex;
     flex-direction: column;
     padding: 50px;
-    background-color: var(--bone);
+    background-color: var(--white-chocolate);
 }
 
 .todo-header {
@@ -101,4 +105,15 @@ nav li {
     display: flex;
     flex-direction: column;
     gap: 30px;
+}
+
+.item {
+    border: solid teal;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: medium;
+    font-weight: normal;
 }
