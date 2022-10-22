@@ -17,26 +17,26 @@ html {
     height: 100%;
     font-size: 100%;
     font-family: Roboto, Courier, serif;
-    border: solid red;
+    position: fixed;
 }
 
 body {
-    height: 98%;
-    width: 98%;
+    height: 100%;
+    width: 100%;
     /* width: min(100%, 500px);
     height: min(100%, 825px); */
-    position: relative; 
+    /* position: relative;  */
+    /* position: fixed; */
     display: grid;
-    grid-template-rows: 6vh 1fr 4vh; 
-    border: solid blue;
+    grid-template-rows: 6vh 1fr 4vh;
 } 
 
 header, footer {
-    position: absolute;
     background-color: var(--pewter-blue);
 }
 
 footer {
+    position: fixed;
     bottom: 0px;
     width: 100%;
     height: 4vh;
@@ -79,9 +79,8 @@ main {
 
 nav {
     position: fixed;
-    height: 90%;
+    height: calc(100% - 10vh);
     padding: 30px 20px;
-    border: solid blue;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -95,36 +94,6 @@ nav {
     opacity: 1;
     transform: translateY(0px); 
 }
-
-/* .hidden{
-    animation: slide-out 1.8s ease;
-} */
-
-/* @keyframes slide-out {
-    0% {
-      transform: translateY(0px);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-1000px);
-      opacity: 0;
-    }
-}  */
-
-/* .visible{
-    animation: slide-in 0.8s ease;
-}  */
-
-/* @keyframes slide-in {
-    0% {
-      transform: translateY(-1000px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-}  */
 
 nav li {
     list-style: none;
@@ -142,13 +111,35 @@ nav li {
 #projects-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 } 
 
 #add-project{
-    font-size: x-large;
+    font-size: xx-large;
     background: var(--bone);
     padding: 0 10px;
     border: none;
+}
+
+#project-links li {
+    border: solid green;
+    display: flex;
+    justify-content: space-between;
+}
+
+#project-links button {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bone);
+    border: none;
+}
+
+#project-links img {
+    width: 20px;
+    height: auto;
 }
 
 #navbar-bottom ul{
@@ -190,3 +181,33 @@ nav li {
     font-size: medium;
     font-weight: normal;
 } 
+
+/* .hidden{
+    animation: slide-out 1.8s ease;
+} */
+
+/* @keyframes slide-out {
+    0% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-1000px);
+      opacity: 0;
+    }
+}  */
+
+/* .visible{
+    animation: slide-in 0.8s ease;
+}  */
+
+/* @keyframes slide-in {
+    0% {
+      transform: translateY(-1000px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+}  */
