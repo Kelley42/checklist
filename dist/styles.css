@@ -97,15 +97,21 @@ nav {
 
 nav li {
     list-style: none;
-    font-size: large;
 }
 
 .navbar {
-    border: solid green;
+    /* border: solid green; */
+}
+
+#navbar-top ul{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: larger;
 }
 
 #navbar-bottom-heading {
-    font-size: x-large;
+    font-size: large;
 }
 
 #projects-container {
@@ -132,6 +138,7 @@ nav li {
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+    font-size: large;
 }
 
 #project-links button {
