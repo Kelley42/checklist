@@ -162,9 +162,37 @@ nav li {
     left: 50%;
     border: solid black;
     background-color: var(--cinereous);
-    padding: 20px;
+    padding: 30px 40px;
     transform: translate(-50%, -50%);
     z-index: 3;
+}
+
+.new-project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-field {
+    height: 30px;
+    padding: 0 0 20px 0;
+}
+
+#new-project-title {
+    height: 100%;
+}
+
+#save-cancel-project-btns-group {
+    display: flex;
+    gap: 30px;
+}
+
+.save-cancel-project-btns {
+    padding: 8px;
+    background-color: var(--bone);
+    border: none;
+    box-shadow: 2px 2px black;
 }
 
 #content {
