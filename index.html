@@ -13,6 +13,21 @@
       <img src="" alt="">
     </header>
     <main>
+      <form action="" class="new-project-form">
+        <div class="new-project">
+            <h2>Add Project</h2>
+            <fieldset>
+                <div class="input_field">
+                    <label for="new-project-title"></label>
+                    <input type="text" id="new-project-title" name="new-project-title" placeholder= "Project Title" autocomplete="off" maxlength="50" required>
+                </div>
+            </fieldset>
+            <div id="save-cancel-project-btns-group">
+              <button type="button" class="save-cancel-project-btns" id="save-project-btn">Save</button>
+              <button type="button" class="save-cancel-project-btns" id="cancel-project-btn">Cancel</button>
+            </div>
+        </div>
+      </form>
       <nav id="navbar-container">
         <div class="navbar" id="navbar-top">
             <ul>
@@ -25,7 +40,7 @@
           <div id="projects-container">
             <h2>Projects</h2> 
             <button id="add-project">+</button>
-          </div>   
+          </div>  
             <ul id="project-links">
                 <li>Personal<button><img src="./images/pencil-outline.png" alt="edit"></button></li>
                 <li>Work <button><img src="./images/pencil-outline.png" alt="edit"></button></li>

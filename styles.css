@@ -156,12 +156,24 @@ nav li {
     height: auto;
 }
 
+.new-project-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: solid black;
+    background-color: var(--cinereous);
+    padding: 20px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
 #content {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 30px;
     background-color: var(--white-chocolate);
+    border: solid var(--tomato);
 }
 
 .todo-header {
