@@ -8,8 +8,6 @@ const addProject = () => {
     }
 
     function showProjects() {
-        const projectLinksContainer = document.querySelector("#project-links");
-
         projectArray.forEach(function(i) {
             const projectTitle = document.createElement("li");
             projectTitle.classList.add("project-title");
@@ -28,12 +26,29 @@ const addProject = () => {
         })
     }
 
+    function saveProject() {
+        const newProjectTitle = document.querySelector("#new-project-title");
+        projectArray.push(newProjectTitle.value);
+
+        // Erase old library display
+        projectLinksContainer.innerHTML = "";
+
+        // Show all projects
+        showProjects();
+
+        // Reset and close form
+        form.reset();
+        hideAddProjectForm();
+    }
+
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form")
-    const cancel_project_btn = document.querySelector("#cancel-project-btn");
-    cancel_project_btn.addEventListener("click", hideAddProjectForm);
-    const add_project_btn = document.querySelector("#save-project-btn");
+    const projectLinksContainer = document.querySelector("#project-links");
+    const cancelProjectBtn = document.querySelector("#cancel-project-btn");
+    cancelProjectBtn.addEventListener("click", hideAddProjectForm);
+    const saveProjectBtn = document.querySelector("#save-project-btn");
+    saveProjectBtn.addEventListener("click", saveProject);
 
     function hideAddProjectForm() {
         form.style.display = "none";
