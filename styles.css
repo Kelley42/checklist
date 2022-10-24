@@ -177,10 +177,12 @@ nav li {
 .input-field {
     height: 30px;
     padding: 0 0 20px 0;
+    border: none;
 }
 
 #new-project-title {
     height: 100%;
+    border: none;
 }
 
 #save-cancel-project-btns-group {
