@@ -12,7 +12,6 @@ const addProject = () => {
             const projectTitle = document.createElement("li");
             projectTitle.classList.add("project-title");
             projectTitle.innerHTML = i;
-            console.log(i)
 
             const editBtn = document.createElement("button");
             editBtn.classList.add("edit-btn");
@@ -30,7 +29,7 @@ const addProject = () => {
         const newProjectTitle = document.querySelector("#new-project-title");
         projectArray.push(newProjectTitle.value);
 
-        // Erase old library display
+        // Erase old projects display
         projectLinksContainer.innerHTML = "";
 
         // Show all projects
