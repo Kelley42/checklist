@@ -14,6 +14,7 @@ const addProject = () => {
             const projectTitle = document.createElement("li");
             projectTitle.classList.add("project-title");
             projectTitle.innerHTML = i;
+            console.log(i)
 
             const editBtn = document.createElement("button");
             editBtn.classList.add("edit-btn");
