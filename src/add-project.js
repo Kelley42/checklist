@@ -26,7 +26,7 @@ const addProject = () => {
     }
 
     function saveProject() {
-        const newProjectTitle = document.querySelector("#new-project-title");
+        console.log("yep")
         projectArray.push(newProjectTitle.value);
 
         // Erase old projects display
@@ -40,6 +40,12 @@ const addProject = () => {
         hideAddProjectForm();
     }
 
+    // function saveEnterBtn(e) {
+    //     if(e.keyCode == 13 && form.style.display == "block") {
+    //         saveProject;
+    //     }
+    // }
+
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form")
@@ -48,6 +54,15 @@ const addProject = () => {
     cancelProjectBtn.addEventListener("click", hideAddProjectForm);
     const saveProjectBtn = document.querySelector("#save-project-btn");
     saveProjectBtn.addEventListener("click", saveProject);
+
+    const newProjectTitle = document.querySelector("#new-project-title");
+    newProjectTitle.addEventListener("keydown", (e) => {
+        if (e.key == "Enter") {
+            e.preventDefault();
+            //saveProject();
+            saveProjectBtn.click();
+        }
+    })
 
     function hideAddProjectForm() {
         form.style.display = "none";
