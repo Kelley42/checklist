@@ -26,7 +26,6 @@ const addProject = () => {
     }
 
     function saveProject() {
-        console.log("yep")
         projectArray.push(newProjectTitle.value);
 
         // Erase old projects display
@@ -70,6 +69,7 @@ const addProject = () => {
     
     function showAddProjectForm() {
         form.style.display = "block";
+        newProjectTitle.focus();
     }
     
     hideAddProjectForm();
