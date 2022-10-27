@@ -4,7 +4,17 @@ const todos = () => {
 
     const todoHeader = document.createElement("div");
     todoHeader.classList.add("todo-header");
-    todoHeader.innerHTML = "Inbox";
+
+    const todoTitle = document.createElement("h2");
+    todoTitle.classList.add("todo-title");
+    todoTitle.innerHTML = "Inbox";
+    todoHeader.appendChild(todoTitle);
+
+    const addTodo = document.createElement("button");
+    addTodo.classList.add("add-todo");
+    addTodo.innerHTML = "+";
+    todoHeader.appendChild(addTodo);
+
     content.appendChild(todoHeader);
 
     let todoList = [

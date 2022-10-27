@@ -218,8 +218,20 @@ fieldset {
 }
 
 .todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todo-title {
     font-size: x-large;
     font-weight: bold;
+}
+
+.add-todo {
+    background-color: var(--white-chocolate);
+    border: none;
+    font-size: xx-large;
 }
 
 .menu-items-container {
@@ -227,7 +239,7 @@ fieldset {
 }
 
 .todo-list-container {
-    border: solid red;
+    border: solid var(--jasmine);
     display: flex;
     flex-direction: column;
     gap: 30px;

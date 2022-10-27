@@ -39,12 +39,6 @@ const addProject = () => {
         hideAddProjectForm();
     }
 
-    // function saveEnterBtn(e) {
-    //     if(e.keyCode == 13 && form.style.display == "block") {
-    //         saveProject;
-    //     }
-    // }
-
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form")
