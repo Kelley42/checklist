@@ -22,7 +22,23 @@ const addProject = () => {
                 newProjectTitle.value = currentTitle;
                 form.style.display = "block";
                 newProjectTitle.focus();
+                saveProjectBtn.removeEventListener("click", saveProject);
+                saveProjectBtn.addEventListener("click", editProject);
+                
+                function editProject() {
+                    projectTitle.innerHTML = newProjectTitle.value;
+                    console.log(projectTitle.innerHTML)
+                    const index = projectArray.indexOf(currentTitle)
+                    if (index !== -1) {
+                        projectArray[index] = projectTitle.innerHTML;
+                    }
+    
+                    resetForm();
+                }
+                //saveProjectBtn.removeEventListener("click", editProject);
+                //saveProjectBtn.addEventListener("click", saveProject);
             });
+            
 
             const editImage = document.createElement("img");
             editImage.src = "./images/pencil-outline.png";
@@ -34,11 +50,15 @@ const addProject = () => {
     }
 
     function saveProject() {
+        console.log("hi")
         projectArray.push(newProjectTitle.value);
+        resetForm();
+    }
 
+    function resetForm() {
         // Erase old projects display
         projectLinksContainer.innerHTML = "";
-
+            
         // Show all projects
         showProjects();
 
@@ -68,6 +88,8 @@ const addProject = () => {
 
     function hideAddProjectForm() {
         form.style.display = "none";
+        newProjectTitle.placeholder = "Project Title";
+        newProjectTitle.value = "";
     }
     
     function showAddProjectForm() {
