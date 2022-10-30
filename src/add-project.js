@@ -15,6 +15,14 @@ const addProject = () => {
 
             const editBtn = document.createElement("button");
             editBtn.classList.add("edit-btn");
+            editBtn.addEventListener("click", () => {
+                addProjectHeader.innerHTML = "Edit Project";
+                newProjectTitle.placeholder = ""
+                const currentTitle = projectTitle.innerText;
+                newProjectTitle.value = currentTitle;
+                form.style.display = "block";
+                newProjectTitle.focus();
+            });
 
             const editImage = document.createElement("img");
             editImage.src = "./images/pencil-outline.png";
@@ -43,6 +51,7 @@ const addProject = () => {
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form")
     const projectLinksContainer = document.querySelector("#project-links");
+    const addProjectHeader = document.querySelector("#add-project-header");
     const cancelProjectBtn = document.querySelector("#cancel-project-btn");
     cancelProjectBtn.addEventListener("click", hideAddProjectForm);
     const saveProjectBtn = document.querySelector("#save-project-btn");
@@ -62,6 +71,8 @@ const addProject = () => {
     }
     
     function showAddProjectForm() {
+        addProjectHeader.innerHTML = "Add Project";
+        newProjectTitle.placeholder = "Project Title";
         form.style.display = "block";
         newProjectTitle.focus();
     }
