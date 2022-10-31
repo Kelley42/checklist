@@ -97,6 +97,7 @@ nav {
 
 nav li {
     list-style: none;
+    padding: 5px;
 }
 
 .navbar {
@@ -118,6 +119,7 @@ nav li {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 5px;
 } 
 
 #add-project{
@@ -131,17 +133,25 @@ nav li {
     padding: 0 0 0 20px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
-#project-links li {
+.project-title-container:hover,
+nav li:hover,
+.edit-btn:hover {
+    background-color: var(--white-chocolate);
+}
+
+.project-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
     font-size: large;
+    padding: 0 5px;
 }
 
-#project-links button {
+.edit-btn {
     width: 40px;
     height: 40px;
     display: flex;
