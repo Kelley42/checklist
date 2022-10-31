@@ -19,15 +19,23 @@ const addProject = () => {
             const editBtn = document.createElement("button");
             editBtn.classList.add("edit-btn");
             editBtn.addEventListener("click", () => {
+                // const editProjectChoices = document.createElement("div");
+                // editProjectChoices.classList.add("edit-project-choices");
+                // editProjectChoices.style.display = "block";
+
+                // const chooseEditProject = document.createElement("button");
+                // chooseEditProject.innerHTML = "Edit";
+                // chooseEditProject.classList.add("choose-edit-project");
+                // chooseEditProject.addEventListener("click", () => {
                 addProjectHeader.innerHTML = "Edit Project";
-                newProjectTitle.placeholder = ""
+                newProjectTitle.placeholder = "";
                 const currentTitle = projectTitle.innerText;
                 newProjectTitle.value = currentTitle;
                 form.style.display = "block";
                 newProjectTitle.focus();
                 saveProjectBtn.removeEventListener("click", saveProject);
                 saveProjectBtn.addEventListener("click", editProject);
-                
+                    
                 function editProject() {
                     projectTitle.innerHTML = newProjectTitle.value;
                     const index = projectArray.indexOf(currentTitle);
@@ -37,6 +45,17 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
+            // })
+
+                // const chooseDeleteProject = document.createElement("button");
+                // chooseDeleteProject.innerHTML = "Delete";
+                // chooseDeleteProject.classList.add("choose-delete-project");
+                // chooseDeleteProject.addEventListener("click", () => {
+                //     console.log("delete?")
+                // })
+                
+                // editProjectChoices.appendChild(chooseEditProject);
+                // editProjectChoices.appendChild(chooseDeleteProject);
             });
 
             const editImage = document.createElement("img");
@@ -46,8 +65,6 @@ const addProject = () => {
             projectTitle.appendChild(editBtn);
             projectTitleContainer.appendChild(projectTitle);
             projectLinksContainer.appendChild(projectTitleContainer);
-
-            
         })
     }
 
