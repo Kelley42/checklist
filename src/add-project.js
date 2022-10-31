@@ -27,16 +27,13 @@ const addProject = () => {
                 
                 function editProject() {
                     projectTitle.innerHTML = newProjectTitle.value;
-                    console.log(projectTitle.innerHTML)
-                    const index = projectArray.indexOf(currentTitle)
+                    const index = projectArray.indexOf(currentTitle);
                     if (index !== -1) {
                         projectArray[index] = projectTitle.innerHTML;
                     }
-    
                     resetForm();
+                    saveProjectBtn.removeEventListener("click", editProject);
                 }
-                //saveProjectBtn.removeEventListener("click", editProject);
-                //saveProjectBtn.addEventListener("click", saveProject);
             });
             
 
@@ -50,7 +47,6 @@ const addProject = () => {
     }
 
     function saveProject() {
-        console.log("hi")
         projectArray.push(newProjectTitle.value);
         resetForm();
     }
