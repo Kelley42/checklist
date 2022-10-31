@@ -167,15 +167,22 @@ nav li:hover,
     height: auto;
 }
 
+.edit-project-choices {
+    position: absolute;
+    z-index: 4;
+    width: 200px;
+    height: 100px;
+}
+
 .new-project-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: min(60%, 425px);
+    width: min(60%, 300px);
     height: min(25%, 400px);
     border: solid black;
     background-color: var(--cinereous);
-    padding: 30px 40px;
+    padding: 30px 40px 20px 40px;
     transform: translate(-50%, -50%);
     z-index: 3;
 }
@@ -207,24 +214,41 @@ fieldset {
     font-size: large;
 }
 
+#form-btns-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 #save-cancel-project-btns-group {
     display: flex;
-    gap: 30px;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+#delete-project-btn-group {
+    display: flex;
+    justify-content: center;
 }
 
 .save-cancel-project-btns {
     padding: 8px;
     background-color: var(--bone);
     border: none;
-    box-shadow: 2px 2px black;
+    box-shadow: 3px 3px black;
     font-weight: bold;
     font-size: medium;
     letter-spacing: .1rem;
+    width: 80px;
 }
 
 #save-project-btn,
 #edit-project-btn {
     background-color: var(--pewter-blue);
+}
+
+#delete-project-btn {
+    background-color: var(--tomato);
 }
 
 #content {
