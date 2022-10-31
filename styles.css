@@ -217,6 +217,14 @@ fieldset {
     background-color: var(--bone);
     border: none;
     box-shadow: 2px 2px black;
+    font-weight: bold;
+    font-size: medium;
+    letter-spacing: .1rem;
+}
+
+#save-project-btn,
+#edit-project-btn {
+    background-color: var(--pewter-blue);
 }
 
 #content {
