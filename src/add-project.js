@@ -9,6 +9,9 @@ const addProject = () => {
 
     function showProjects() {
         projectArray.forEach(function(i) {
+            const projectTitleContainer = document.createElement("div");
+            projectTitleContainer.classList.add("project-title-container");
+
             const projectTitle = document.createElement("li");
             projectTitle.classList.add("project-title");
             projectTitle.innerHTML = i;
@@ -35,14 +38,16 @@ const addProject = () => {
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
             });
-            
 
             const editImage = document.createElement("img");
             editImage.src = "./images/pencil-outline.png";
 
             editBtn.appendChild(editImage);
             projectTitle.appendChild(editBtn);
-            projectLinksContainer.appendChild(projectTitle);
+            projectTitleContainer.appendChild(projectTitle);
+            projectLinksContainer.appendChild(projectTitleContainer);
+
+            
         })
     }
 
