@@ -226,7 +226,7 @@ fieldset {
     gap: 40px;
 }
 
-#delete-project-btn-group {
+.delete-project-btn-group {
     display: flex;
     justify-content: center;
 }
@@ -247,7 +247,7 @@ fieldset {
     background-color: var(--pewter-blue);
 }
 
-#delete-project-btn {
+.delete-project-btn {
     background-color: var(--tomato);
 }
 
