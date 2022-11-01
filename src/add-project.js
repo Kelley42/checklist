@@ -19,14 +19,6 @@ const addProject = () => {
             const editBtn = document.createElement("button");
             editBtn.classList.add("edit-btn");
             editBtn.addEventListener("click", () => {
-                // const editProjectChoices = document.createElement("div");
-                // editProjectChoices.classList.add("edit-project-choices");
-                // editProjectChoices.style.display = "block";
-
-                // const chooseEditProject = document.createElement("button");
-                // chooseEditProject.innerHTML = "Edit";
-                // chooseEditProject.classList.add("choose-edit-project");
-                // chooseEditProject.addEventListener("click", () => {
                 addProjectHeader.innerHTML = "Edit Project";
                 newProjectTitle.placeholder = "";
                 const currentTitle = projectTitle.innerText;
@@ -45,17 +37,19 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
-            // })
 
-                // const chooseDeleteProject = document.createElement("button");
-                // chooseDeleteProject.innerHTML = "Delete";
-                // chooseDeleteProject.classList.add("choose-delete-project");
-                // chooseDeleteProject.addEventListener("click", () => {
-                //     console.log("delete?")
-                // })
+                const deleteProjectBtnGroup = document.createElement("div");
+                deleteProjectBtnGroup.classList.add("delete-project-btn-group");
+                const deleteProjectBtn = document.createElement("button");
+                deleteProjectBtn.classList.add("save-cancel-project-btns");
+                deleteProjectBtn.classList.add("delete-project-btn");
+                deleteProjectBtn.innerHTML = "Delete";
                 
-                // editProjectChoices.appendChild(chooseEditProject);
-                // editProjectChoices.appendChild(chooseDeleteProject);
+                form.style.padding = "30px 40px 60px 40px";
+                
+                deleteProjectBtnGroup.appendChild(deleteProjectBtn);
+                const formBtnsGroup = document.querySelector("#form-btns-group");
+                formBtnsGroup.appendChild(deleteProjectBtnGroup);
             });
 
             const editImage = document.createElement("img");
@@ -87,7 +81,9 @@ const addProject = () => {
 
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
-    const form = document.querySelector(".new-project-form")
+    const form = document.querySelector(".new-project-form");
+    //form.style.padding = "30px 40px 30px 40px";
+
     const projectLinksContainer = document.querySelector("#project-links");
     const addProjectHeader = document.querySelector("#add-project-header");
     const cancelProjectBtn = document.querySelector("#cancel-project-btn");
