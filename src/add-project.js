@@ -25,6 +25,8 @@ const addProject = () => {
                 newProjectTitle.value = currentTitle;
                 form.style.display = "block";
                 newProjectTitle.focus();
+
+                // Change Save button functionality to edit
                 saveProjectBtn.removeEventListener("click", saveProject);
                 saveProjectBtn.addEventListener("click", editProject);
                     
@@ -37,19 +39,9 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
-
-                const deleteProjectBtnGroup = document.createElement("div");
-                deleteProjectBtnGroup.classList.add("delete-project-btn-group");
-                const deleteProjectBtn = document.createElement("button");
-                deleteProjectBtn.classList.add("save-cancel-project-btns");
-                deleteProjectBtn.classList.add("delete-project-btn");
-                deleteProjectBtn.innerHTML = "Delete";
                 
-                form.style.padding = "30px 40px 60px 40px";
-                
-                deleteProjectBtnGroup.appendChild(deleteProjectBtn);
-                const formBtnsGroup = document.querySelector("#form-btns-group");
-                formBtnsGroup.appendChild(deleteProjectBtnGroup);
+                form.style.padding = "30px 40px 70px 40px";
+                deleteProjectBtnGroup.style.display = "flex";
             });
 
             const editImage = document.createElement("img");
@@ -79,10 +71,25 @@ const addProject = () => {
         hideAddProjectForm();
     }
 
+    function hideAddProjectForm() {
+        form.style.display = "none";
+        newProjectTitle.placeholder = "Project Title";
+        newProjectTitle.value = "";
+    }
+    
+    function showAddProjectForm() {
+        addProjectHeader.innerHTML = "Add Project";
+        newProjectTitle.placeholder = "Project Title";
+        form.style.padding = "30px 40px 30px 40px";
+        form.style.display = "block";
+        console.log(deleteProjectBtnGroup)
+        deleteProjectBtnGroup.style.display = "none";
+        newProjectTitle.focus();
+    }
+
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form");
-    //form.style.padding = "30px 40px 30px 40px";
 
     const projectLinksContainer = document.querySelector("#project-links");
     const addProjectHeader = document.querySelector("#add-project-header");
@@ -90,6 +97,7 @@ const addProject = () => {
     cancelProjectBtn.addEventListener("click", hideAddProjectForm);
     const saveProjectBtn = document.querySelector("#save-project-btn");
     saveProjectBtn.addEventListener("click", saveProject);
+    const deleteProjectBtnGroup = document.querySelector("#delete-project-btn-group");
 
     const newProjectTitle = document.querySelector("#new-project-title");
     newProjectTitle.addEventListener("keydown", (e) => {
@@ -100,18 +108,7 @@ const addProject = () => {
         }
     })
 
-    function hideAddProjectForm() {
-        form.style.display = "none";
-        newProjectTitle.placeholder = "Project Title";
-        newProjectTitle.value = "";
-    }
     
-    function showAddProjectForm() {
-        addProjectHeader.innerHTML = "Add Project";
-        newProjectTitle.placeholder = "Project Title";
-        form.style.display = "block";
-        newProjectTitle.focus();
-    }
     
     hideAddProjectForm();
     addProjectToArray();
