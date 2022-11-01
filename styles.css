@@ -83,7 +83,7 @@ nav {
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
     background-color: var(--bone);
     transition: opacity 1s ease, transform 1s ease;
     opacity: 0;
@@ -182,7 +182,6 @@ nav li:hover,
     height: min(25%, 400px);
     border: solid black;
     background-color: var(--cinereous);
-    padding: 30px 40px 20px 40px;
     transform: translate(-50%, -50%);
     z-index: 3;
 }
@@ -217,7 +216,7 @@ fieldset {
 #form-btns-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 #save-cancel-project-btns-group {
@@ -226,9 +225,10 @@ fieldset {
     gap: 40px;
 }
 
-.delete-project-btn-group {
+#delete-project-btn-group {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .save-cancel-project-btns {
@@ -247,7 +247,7 @@ fieldset {
     background-color: var(--pewter-blue);
 }
 
-.delete-project-btn {
+#delete-project-btn {
     background-color: var(--tomato);
 }
 
