@@ -39,9 +39,21 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
-                
+                // Show Delete button
                 form.style.padding = "30px 40px 70px 40px";
                 deleteProjectBtnGroup.style.display = "flex";
+
+                // Give functionality to delete project
+                const deleteProjectBtn = document.querySelector("#delete-project-btn");
+                deleteProjectBtn.addEventListener("click", deleteProject);
+
+                function deleteProject() {
+                    const index = projectArray.indexOf(currentTitle);
+                    if (index !== -1) {
+                        projectArray.splice(index, 1);
+                    }
+                    resetForm();
+                }
             });
 
             const editImage = document.createElement("img");
@@ -82,9 +94,11 @@ const addProject = () => {
         newProjectTitle.placeholder = "Project Title";
         form.style.padding = "30px 40px 30px 40px";
         form.style.display = "block";
-        console.log(deleteProjectBtnGroup)
-        deleteProjectBtnGroup.style.display = "none";
         newProjectTitle.focus();
+
+        // Don't show Delete button
+        deleteProjectBtnGroup.style.display = "none";
+        
     }
 
     const addProject = document.querySelector("#add-project");
