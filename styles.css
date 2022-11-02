@@ -75,6 +75,7 @@ header img{
 main {
     display: flex;
     position: relative;
+    background-color: var(--white-chocolate);
 }
 
 nav {
@@ -122,7 +123,7 @@ nav li {
     padding: 5px;
 } 
 
-#add-project{
+#add-project {
     font-size: xx-large;
     background: var(--bone);
     padding: 0 10px;
@@ -252,12 +253,14 @@ fieldset {
 }
 
 #content {
-    width: 100%;
+    width: min(100%, 800px);
     display: flex;
     flex-direction: column;
     padding: 20px 30px;
     background-color: var(--white-chocolate);
     border: solid var(--tomato);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .todo-header {
