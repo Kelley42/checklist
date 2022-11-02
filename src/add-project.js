@@ -44,16 +44,14 @@ const addProject = () => {
                 deleteProjectBtnGroup.style.display = "flex";
 
                 // Give functionality to delete project
-                const deleteProjectBtn = document.querySelector("#delete-project-btn");
-                deleteProjectBtn.addEventListener("click", deleteProject);
-
-                function deleteProject() {
+                document.querySelector("#delete-project-btn").addEventListener("click", () => {
                     const index = projectArray.indexOf(currentTitle);
                     if (index !== -1) {
                         projectArray.splice(index, 1);
                     }
                     resetForm();
-                }
+                    saveProjectBtn.removeEventListener("click", editProject);
+                });
             });
 
             const editImage = document.createElement("img");
@@ -95,6 +93,7 @@ const addProject = () => {
         form.style.padding = "30px 40px 30px 40px";
         form.style.display = "block";
         newProjectTitle.focus();
+        saveProjectBtn.addEventListener("click", saveProject);
 
         // Don't show Delete button
         deleteProjectBtnGroup.style.display = "none";
@@ -110,20 +109,19 @@ const addProject = () => {
     const cancelProjectBtn = document.querySelector("#cancel-project-btn");
     cancelProjectBtn.addEventListener("click", hideAddProjectForm);
     const saveProjectBtn = document.querySelector("#save-project-btn");
-    saveProjectBtn.addEventListener("click", saveProject);
+    
     const deleteProjectBtnGroup = document.querySelector("#delete-project-btn-group");
 
+    // Can press Enter to add/edit project title
     const newProjectTitle = document.querySelector("#new-project-title");
     newProjectTitle.addEventListener("keydown", (e) => {
         if (e.key == "Enter") {
             e.preventDefault();
-            //saveProject();
             saveProjectBtn.click();
         }
     })
 
-    
-    
+    // Initial set-up
     hideAddProjectForm();
     addProjectToArray();
     showProjects();
