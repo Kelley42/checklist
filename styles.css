@@ -209,6 +209,7 @@ fieldset {
     border: none;
     padding: 0 10px;
     border: solid var(--pewter-blue);
+    outline: none;
     /* width: min(100%, 300px); */
     width: 90%;
     font-size: large;
