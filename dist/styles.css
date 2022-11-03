@@ -81,6 +81,7 @@ main {
 nav {
     position: fixed;
     height: calc(100% - 10vh);
+    max-width: 275px;
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
@@ -101,10 +102,6 @@ nav li {
     padding: 8px 5px;
 }
 
-.navbar {
-    /* border: solid green; */
-}
-
 #navbar-top ul{
     display: flex;
     flex-direction: column;
@@ -121,6 +118,7 @@ nav li {
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    gap: 20px;
 } 
 
 #add-project {
@@ -148,9 +146,11 @@ nav li:hover,
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
     font-size: large;
     padding: 0 5px;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .edit-btn {
