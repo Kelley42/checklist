@@ -8,7 +8,7 @@ const addProject = () => {
     }
 
     function showProjects() {
-        projectArray.forEach(function(i) {
+        projectArray.forEach((i) => {
             const projectTitleContainer = document.createElement("div");
             projectTitleContainer.classList.add("project-title-container");
 
