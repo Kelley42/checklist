@@ -194,10 +194,6 @@ nav li:hover,
     gap: 20px;
 }
 
-fieldset {
-    border: none;
-}
-
 .input-field {
     height: 25px;
     padding: 0 0 20px 0;
@@ -251,6 +247,35 @@ fieldset {
 
 #delete-project-btn {
     background-color: var(--tomato);
+}
+
+.new-todo-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(60%, 300px);
+    height: min(25%, 400px);
+    border: solid black;
+    background-color: var(--jasmine);
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.new-todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#new-todo-title {
+    height: 150%;
+    border: none;
+    padding: 0 10px;
+    border: solid var(--pewter-blue);
+    outline: none;
+    width: 90%;
+    font-size: large;
 }
 
 #content {
