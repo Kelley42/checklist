@@ -148,9 +148,9 @@ nav li:hover,
     justify-content: space-between;
     font-size: large;
     padding: 0 5px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     word-wrap: break-word;
-    word-break: break-word;
+    word-break: break-word; */
 }
 
 .edit-btn {
@@ -275,25 +275,21 @@ fieldset {
     font-weight: bold;
 }
 
-.add-todo {
+.add-todo-btn {
     background-color: var(--white-chocolate);
     border: none;
     font-size: xx-large;
 }
 
-.menu-items-container {
-    border: solid black;
-}
-
-.todo-list-container {
-    border: solid var(--jasmine);
+.todo-items-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    border: solid var(--pewter-blue);
+    gap: 10px;
 }
 
 .item {
-    border: solid teal;
+    border: solid var(--jasmine);
     display: flex;
     justify-content: space-between;
 }
