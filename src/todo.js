@@ -3,41 +3,12 @@ const todos = () => {
     let todoArray = [];
 
     function addTodoToArray() {
-        // Add initial projects
+        // Add initial todos
         todoArray.push(
             ["run", "run description", "date", "high", "not done"],
             ["walk", "walk description", "date", "low", "done"]
         );
     }
-
-    function addTodo() {
-        console.log("add new todo")
-    }
-
-    const content = document.querySelector("#content");
-    content.classList.add("todo-content");
-
-    const todoHeader = document.createElement("div");
-    todoHeader.classList.add("todo-header");
-
-    const todoTitle = document.createElement("h2");
-    todoTitle.classList.add("todo-title");
-    todoTitle.innerHTML = "Inbox";
-    todoHeader.appendChild(todoTitle);
-
-    const addTodoBtn = document.createElement("button");
-    addTodoBtn.type = "button";
-    addTodoBtn.classList.add("add-todo-btn");
-    addTodoBtn.innerHTML = "+";
-    addTodoBtn.addEventListener("click", addTodo);
-    todoHeader.appendChild(addTodoBtn);
-
-    content.appendChild(todoHeader);
-
-    const todoItemsContainer = document.createElement("div");
-    todoItemsContainer.classList.add("todo-items-container");
-    //todoItemsContainer.append(showTodos(todoArray));
-    content.appendChild(todoItemsContainer);
 
     function showTodos() {
         // const todoItemContainer = document.createElement("div");
@@ -74,7 +45,77 @@ const todos = () => {
         //return todoItemContainer;
     };
 
+    function showAddTodoForm() {
+        addTodoHeader.innerHTML = "Add Todo";
+        newTodoTitle.placeholder = "Todo Title";
+        form.style.padding = "30px 40px 30px 40px";
+        form.style.display = "block";
+        newTodoTitle.focus();
+        saveTodoBtn.addEventListener("click", saveTodo);
+
+        // Don't show Delete button
+        deleteProjectBtnGroup.style.display = "none";
+    }
+
+    function hideAddTodoForm() {
+        form.style.display = "none";
+        newTodoTitle.placeholder = "Todo Title";
+        newTodoTitle.value = "";
+    }
+
+    function saveTodo() {
+        todoArray.push(newTodoTitle.value);
+        resetForm();
+    }
+
+    function resetForm() {
+        // Erase old projects display
+        todoItemsContainer.innerHTML = "";
+            
+        // Show all projects
+        showTodos();
+
+        // Reset and close form
+        form.reset();
+        hideAddTodoForm();
+    }
+
+    const content = document.querySelector("#content");
+    content.classList.add("todo-content");
+
+    const todoHeader = document.createElement("div");
+    todoHeader.classList.add("todo-header");
+
+    const todoTitle = document.createElement("h2");
+    todoTitle.classList.add("todo-title");
+    todoTitle.innerHTML = "Inbox";
+    todoHeader.appendChild(todoTitle);
+
+    const addTodoBtn = document.createElement("button");
+    addTodoBtn.type = "button";
+    addTodoBtn.classList.add("add-todo-btn");
+    addTodoBtn.innerHTML = "+";
+    addTodoBtn.addEventListener("click", showAddTodoForm);
+    todoHeader.appendChild(addTodoBtn);
+
+    content.appendChild(todoHeader);
+
+    const todoItemsContainer = document.createElement("div");
+    todoItemsContainer.classList.add("todo-items-container");
+    //todoItemsContainer.append(showTodos(todoArray));
+    content.appendChild(todoItemsContainer);
+
+    const form = document.querySelector(".new-todo-form");
+    const newTodoTitle = document.querySelector("#new-todo-title");
+    const addTodoHeader = document.querySelector("#add-todo-header");
+    const cancelTodoBtn = document.querySelector("#cancel-todo-btn");
+    cancelTodoBtn.addEventListener("click", hideAddTodoForm);
+    const saveTodoBtn = document.querySelector("#save-todo-btn");
+    
+    const deleteProjectBtnGroup = document.querySelector("#delete-project-btn-group");
+
     addTodoToArray();
+    hideAddTodoForm();
     showTodos();
 };
 

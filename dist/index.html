@@ -16,12 +16,10 @@
       <form action="" class="new-project-form">
         <div class="new-project">
             <h3 id="add-project-header"></h3>
-            <fieldset>
-                <div class="input-field">
-                    <label for="new-project-title"></label>
-                    <input type="text" id="new-project-title" name="new-project-title" placeholder= "Project Title" autocomplete="off" autofocus maxlength="25" required>
-                </div>
-            </fieldset>
+              <div class="input-field">
+                  <label for="new-project-title"></label>
+                  <input type="text" id="new-project-title" name="new-project-title" placeholder= "Project Title" autocomplete="off" autofocus maxlength="25" required>
+              </div>
             <div id="form-btns-group">
               <div id="save-cancel-project-btns-group">
                 <button type="button" class="save-cancel-project-btns" id="save-project-btn">Save</button>
@@ -50,6 +48,40 @@
             <ul id="project-links"></ul>
         </div>
     </nav>
+    <form action="" class="new-todo-form">
+      <div class="new-todo">
+          <h3 id="add-todo-header"></h3>
+            <div class="todo-input-field">Title
+                <label for="new-todo-title"></label>
+                <input type="text" id="new-todo-title" name="new-todo-title" placeholder= "Todo Title" autocomplete="off" autofocus maxlength="25" required>
+            </div>
+            <div class="todo-input-field">Description
+              <label for="new-todo-description"></label>
+              <input type="text" id="new-todo-description" name="new-todo-description" placeholder= "Todo Desciption" autocomplete="off" maxlength="25" required>
+            </div>
+            <div class="todo-input-field">Date
+              <label for="new-todo-date"></label>
+              <input type="date" id="new-todo-date" name="new-todo-date" placeholder= "MM/DD/YYYY" autocomplete="off"  maxlength="10">
+            </div>
+            <div class="todo-input-field">Priority
+              <label for="new-todo-priority"></label>
+              <select name="new-todo-priority" id="new-todo-priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+          <div id="form-todo-btns-group">
+            <div id="save-cancel-todo-btns-group">
+              <button type="button" class="save-cancel-todo-btns" id="save-todo-btn">Save</button>
+              <button type="button" class="save-cancel-todo-btns" id="cancel-todo-btn">Cancel</button>
+            </div>
+            <div id="delete-todo-btn-group">
+              <button type="button" class="save-cancel-todo-btns" id="delete-todo-btn">Delete</button>
+            </div>
+          </div>
+      </div>
+    </form>
     <div id="content"></div>
     </main>
     <footer>by Kelley42</footer>
