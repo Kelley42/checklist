@@ -40,19 +40,16 @@ const todos = () => {
     content.appendChild(todoItemsContainer);
 
     function showTodos() {
-        //console.log(todoArray)
         // const todoItemContainer = document.createElement("div");
         // todoItemContainer.classList.add("todo-item-container");
     
         for (const item in todoArray) {
-            //console.log(todoArray[item][0])
             const todoItem = document.createElement("div");
             todoItem.classList.add("item");
     
             const title = document.createElement("h2");
             title.classList.add("title");
             title.innerHTML = todoArray[item][0];
-            //console.log(title)
         
             const description = document.createElement("p");
             description.classList.add("description");
@@ -80,7 +77,5 @@ const todos = () => {
     addTodoToArray();
     showTodos();
 };
-
-
 
 export { todos };
