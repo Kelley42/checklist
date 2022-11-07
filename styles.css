@@ -187,7 +187,9 @@ nav li:hover,
     z-index: 3;
 }
 
-.new-project {
+.new-project,
+.new-todo,
+#todo-inputs-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,25 +213,29 @@ nav li:hover,
     font-size: large;
 }
 
-#form-btns-group {
+#form-btns-group,
+#form-todo-btns-group {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-#save-cancel-project-btns-group {
+#save-cancel-project-btns-group,
+#save-cancel-todo-btns-group {
     display: flex;
     justify-content: space-between;
     gap: 40px;
 }
 
-#delete-project-btn-group {
+#delete-project-btn-group,
+#delete-todo-btn-group {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.save-cancel-project-btns {
+.save-cancel-project-btns,
+.save-cancel-todo-btns {
     padding: 8px;
     background-color: var(--bone);
     border: none;
@@ -241,11 +247,14 @@ nav li:hover,
 }
 
 #save-project-btn,
-#edit-project-btn {
+#edit-project-btn,
+#save-todo-btn,
+#edit-todo-btn {
     background-color: var(--pewter-blue);
 }
 
-#delete-project-btn {
+#delete-project-btn
+#delete-todo-btn {
     background-color: var(--tomato);
 }
 
@@ -254,28 +263,32 @@ nav li:hover,
     top: 50%;
     left: 50%;
     width: min(60%, 300px);
-    height: min(25%, 400px);
+    height: min(48%, 450px);
     border: solid black;
     background-color: var(--jasmine);
     transform: translate(-50%, -50%);
     z-index: 3;
 }
 
-.new-todo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+#todo-inputs-container {
+    padding-bottom: 10px;
 }
 
-#new-todo-title {
-    height: 150%;
-    border: none;
+.todo-input-field {
+    display: flex;
+    flex-direction: column;
     padding: 0 10px;
-    border: solid var(--pewter-blue);
     outline: none;
     width: 90%;
     font-size: large;
+}
+
+.todo-inputs {
+    height: 25px;
+}
+
+#todo-subfield {
+    display: flex;
 }
 
 #content {
