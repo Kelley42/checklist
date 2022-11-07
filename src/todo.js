@@ -64,7 +64,11 @@ const todos = () => {
     }
 
     function saveTodo() {
-        todoArray.push(newTodoTitle.value);
+        // Switch date to MM/DD/YYYY
+        const yearFirstDate = newTodoDate.value;
+        const [year, month, day] = yearFirstDate.split("-");
+        const newDateFormat = [month, day, year].join("-");
+        todoArray.push([newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, "not done"]);
         resetForm();
     }
 
@@ -106,8 +110,11 @@ const todos = () => {
     content.appendChild(todoItemsContainer);
 
     const form = document.querySelector(".new-todo-form");
-    const newTodoTitle = document.querySelector("#new-todo-title");
     const addTodoHeader = document.querySelector("#add-todo-header");
+    const newTodoTitle = document.querySelector("#new-todo-title");
+    const newTodoDescription = document.querySelector("#new-todo-description");
+    const newTodoDate = document.querySelector("#new-todo-date");
+    const newTodoPriority = document.querySelector("#new-todo-priority");
     const cancelTodoBtn = document.querySelector("#cancel-todo-btn");
     cancelTodoBtn.addEventListener("click", hideAddTodoForm);
     const saveTodoBtn = document.querySelector("#save-todo-btn");

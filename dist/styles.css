@@ -326,6 +326,14 @@ nav li:hover,
     gap: 10px;
 }
 
+.title,
+.description,
+.date,
+.priority, 
+.done {
+    border: solid green;
+}
+
 .item {
     border: solid var(--jasmine);
     display: flex;
