@@ -54,7 +54,7 @@ const todos = () => {
         saveTodoBtn.addEventListener("click", saveTodo);
 
         // Don't show Delete button
-        deleteProjectBtnGroup.style.display = "none";
+        deleteTodoBtnGroup.style.display = "none";
     }
 
     function hideAddTodoForm() {
@@ -112,7 +112,7 @@ const todos = () => {
     cancelTodoBtn.addEventListener("click", hideAddTodoForm);
     const saveTodoBtn = document.querySelector("#save-todo-btn");
     
-    const deleteProjectBtnGroup = document.querySelector("#delete-project-btn-group");
+    const deleteTodoBtnGroup = document.querySelector("#delete-todo-btn-group");
 
     addTodoToArray();
     hideAddTodoForm();
