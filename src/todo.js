@@ -5,8 +5,8 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["run", "run description", "date", "high", "not done"],
-            ["walk", "walk description", "date", "low", "done"]
+            ["not done", "run", "run description", "date", "high"],
+            ["done", "walk", "walk description", "date", "low"]
         );
     }
 
@@ -17,28 +17,47 @@ const todos = () => {
         for (const item in todoArray) {
             const todoItem = document.createElement("div");
             todoItem.classList.add("item");
+
+            // Style Done and Title-Description container horizontally
+            const todoDoneTitleDescripContainer = document.createElement("div");
+            todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
+
+            const done = document.createElement("p");
+            done.classList.add("done");
+            done.innerHTML = todoArray[item][0];
+            todoDoneTitleDescripContainer.appendChild(done);
+
+            // Style Title and Description vertically
+            const todoTitleDescriptionContainer = document.createElement("div");
+            todoTitleDescriptionContainer.classList.add("todo-title-description-container");
     
             const title = document.createElement("h2");
             title.classList.add("title");
-            title.innerHTML = todoArray[item][0];
+            title.innerHTML = todoArray[item][1];
+            todoTitleDescriptionContainer.appendChild(title);
         
             const description = document.createElement("p");
             description.classList.add("description");
-            description.innerHTML = todoArray[item][1];
+            description.innerHTML = todoArray[item][2];
+            todoTitleDescriptionContainer.appendChild(description);
+
+            todoDoneTitleDescripContainer.appendChild(todoTitleDescriptionContainer);
         
+            // Style Date and Priority vertically
+            const todoDatePriorityContainer = document.createElement("div");
+            todoDatePriorityContainer.classList.add("todo-date-priority-container");
+
             const date = document.createElement("p");
             date.classList.add("date");
-            date.innerHTML = todoArray[item][2];
+            date.innerHTML = todoArray[item][3];
+            todoDatePriorityContainer.appendChild(date);
     
             const priority = document.createElement("p");
             priority.classList.add("priority");
-            priority.innerHTML = todoArray[item][3];
+            priority.innerHTML = todoArray[item][4];
+            todoDatePriorityContainer.appendChild(priority);
     
-            const done = document.createElement("p");
-            done.classList.add("done");
-            done.innerHTML = todoArray[item][4];
-    
-            todoItem.append(title, description, date, priority, done);
+            todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
             //todoItemContainer.appendChild(todoItem);
             todoItemsContainer.appendChild(todoItem);
         }
@@ -68,6 +87,7 @@ const todos = () => {
         const yearFirstDate = newTodoDate.value;
         const [year, month, day] = yearFirstDate.split("-");
         const newDateFormat = [month, day, year].join("-");
+
         todoArray.push([newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, "not done"]);
         resetForm();
     }
