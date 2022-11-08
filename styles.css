@@ -326,6 +326,15 @@ nav li:hover,
     gap: 10px;
 }
 
+.todo-done-title-descrip-container {
+    display: flex;
+}
+
+.todo-title-description-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .title,
 .description,
 .date,
@@ -344,6 +353,10 @@ nav li:hover,
     font-size: medium;
     font-weight: normal;
 } 
+
+.description {
+    font-size: small;
+}
 
 /* .hidden{
     animation: slide-out 1.8s ease;
