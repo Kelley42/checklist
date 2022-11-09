@@ -10,6 +10,9 @@
     --white-chocolate: #EBE4DB;
     --bone: #E1D6C5;
     --cinereous: #9D8887;
+    --light-pewter-blue: #E1EBEC;
+    --light-jasmine: #ece4d3;
+    --light-tomato: #e4d0cd;
 }
 
 html {
@@ -328,6 +331,7 @@ nav li:hover,
 
 .todo-done-title-descrip-container {
     display: flex;
+    align-items: center;
 }
 
 .todo-title-description-container {
@@ -338,8 +342,7 @@ nav li:hover,
 .title,
 .description,
 .date,
-.priority, 
-.done {
+.priority {
     border: solid green;
 }
 
@@ -347,6 +350,13 @@ nav li:hover,
     border: solid var(--jasmine);
     display: flex;
     justify-content: space-between;
+}
+
+.done {
+    width: 30px;
+    height: 30px;
+    /* border: solid var(--pewter-blue) 4px;
+    background-color: var(--light-pewter-blue); */
 }
 
 .title {

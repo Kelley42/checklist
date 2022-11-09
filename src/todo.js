@@ -5,8 +5,8 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["not done", "run", "run description", "date", "high"],
-            ["done", "walk", "walk description", "date", "low"]
+            ["not done", "run", "run description", "date", "High"],
+            ["done", "walk", "walk description", "date", "Low"]
         );
     }
 
@@ -22,9 +22,10 @@ const todos = () => {
             const todoDoneTitleDescripContainer = document.createElement("div");
             todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
 
-            const done = document.createElement("p");
+            const done = document.createElement("button");
+            done.type = "button";
             done.classList.add("done");
-            done.innerHTML = todoArray[item][0];
+            //done.innerHTML = todoArray[item][0];
             todoDoneTitleDescripContainer.appendChild(done);
 
             // Style Title and Description vertically
@@ -52,10 +53,20 @@ const todos = () => {
             date.innerHTML = todoArray[item][3];
             todoDatePriorityContainer.appendChild(date);
     
-            const priority = document.createElement("p");
-            priority.classList.add("priority");
-            priority.innerHTML = todoArray[item][4];
-            todoDatePriorityContainer.appendChild(priority);
+            // const priority = document.createElement("p");
+            // priority.classList.add("priority");
+            // priority.innerHTML = todoArray[item][4];
+
+            // Set done checkbox color according to priority
+            if (todoArray[item][4] == "Low") {
+                done.style.border = "solid var(--pewter-blue) 4px";
+            } else if (todoArray[item][4] == "Medium") {
+                done.style.border = "solid var(--jasmine) 4px";
+            } else if (todoArray[item][4] == "High") {
+                done.style.border = "solid var(--tomato) 4px";
+            }
+
+            // todoDatePriorityContainer.appendChild(priority);
     
             todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
             //todoItemContainer.appendChild(todoItem);
@@ -88,7 +99,7 @@ const todos = () => {
         const [year, month, day] = yearFirstDate.split("-");
         const newDateFormat = [month, day, year].join("-");
 
-        todoArray.push([newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, "not done"]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value]);
         resetForm();
     }
 
