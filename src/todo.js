@@ -103,7 +103,9 @@ const todos = () => {
                     addTodoHeader.innerHTML = "Edit Todo";
                     newTodoTitle.placeholder = "";
                     const currentTitle = title.innerText;
+                    const currentDescription = description.innerHTML;
                     newTodoTitle.value = currentTitle;
+                    newTodoDescription.value = currentDescription;
                     form.style.display = "block";
                     newTodoTitle.focus();
 
@@ -113,10 +115,7 @@ const todos = () => {
                 
                     function editTodo() {
                         title.innerHTML = newTodoTitle.value;
-                        const index = todoArray.indexOf(currentTitle);
-                        if (index !== -1) {
-                            todoArray[index] = title.innerHTML;
-                        }
+                        todoArray[item][1] = title.innerHTML;
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
                     }
@@ -127,9 +126,10 @@ const todos = () => {
 
                     // Give functionality to delete project
                     document.querySelector("#delete-todo-btn").addEventListener("click", () => {
-                        const index = todoArray.indexOf(currentTitle);
-                        if (index !== -1) {
-                            todoArray.splice(index, 1);
+                        console.log(item)
+                        //const index = todoArray.indexOf(item);
+                        if (item !== -1) {
+                            todoArray.splice(item, 1);
                         }
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
