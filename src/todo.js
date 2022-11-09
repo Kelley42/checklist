@@ -16,6 +16,7 @@ const todos = () => {
         // todoItemContainer.classList.add("todo-item-container");
     
         for (const item in todoArray) {
+            if (todoArray[item][0] == "not done") {
             const todoItem = document.createElement("div");
             todoItem.classList.add("item");
             // Odd-numbered item has white background
@@ -38,6 +39,7 @@ const todos = () => {
             done.addEventListener("click", checkDone);
 
             function checkDone() {
+                // Add/remove checkmark
                 if (todoArray[item][0] == "not done") {
                     todoArray[item][0] = "done"
                     done.innerHTML = "✓";
@@ -45,6 +47,13 @@ const todos = () => {
                     todoArray[item][0] = "not done"
                     done.innerHTML = "";
                 }
+
+                // Remove item
+                todoItem.classList.toggle("hidden-item");
+                setTimeout(() => {
+                    todoItemsContainer.innerHTML = "";
+                    showTodos();
+                }, "2000")
             }
             //done.innerHTML = todoArray[item][0];
             todoDoneTitleDescripContainer.appendChild(done);
@@ -92,6 +101,7 @@ const todos = () => {
             todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
             //todoItemContainer.appendChild(todoItem);
             todoItemsContainer.appendChild(todoItem);
+        }
         }
         //return todoItemContainer;
     };
