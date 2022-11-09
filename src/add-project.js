@@ -39,6 +39,7 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
+                
                 // Show Delete button
                 form.style.padding = "30px 40px 70px 40px";
                 deleteProjectBtnGroup.style.display = "flex";

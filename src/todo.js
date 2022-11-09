@@ -76,31 +76,73 @@ const todos = () => {
 
                 todoDoneTitleDescripContainer.appendChild(todoTitleDescriptionContainer);
         
-                // Style Date and Priority vertically
-                const todoDatePriorityContainer = document.createElement("div");
-                todoDatePriorityContainer.classList.add("todo-date-priority-container");
+                // Style Date and Edit vertically
+                const todoDateEditContainer = document.createElement("div");
+                todoDateEditContainer.classList.add("todo-date-edit-container");
 
                 const date = document.createElement("p");
                 date.classList.add("date");
                 date.innerHTML = todoArray[item][3];
-                todoDatePriorityContainer.appendChild(date);
+                todoDateEditContainer.appendChild(date);
 
                 // Set done checkbox color according to priority
                 if (todoArray[item][4] == "Low") {
                     done.style.border = "solid var(--pewter-blue) 4px";
-                    // done.style.accentColor = "var(--light-pewter-blue)";
                     done.style.backgroundColor = "var(--light-pewter-blue)";
                 } else if (todoArray[item][4] == "Medium") {
                     done.style.border = "solid var(--jasmine) 4px";
-                    // done.style.accentColor = "var(--light-jasmine)";
                     done.style.backgroundColor = "var(--light-jasmine)";
                 } else if (todoArray[item][4] == "High") {
                     done.style.border = "solid var(--tomato) 4px";
-                    // done.style.accentColor = "var(--light-tomato)";
                     done.style.backgroundColor = "var(--light-tomato)";
                 }
-    
-                todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
+
+                const editBtn = document.createElement("button");
+                editBtn.classList.add("edit-btn");
+                editBtn.addEventListener("click", () => {
+                    addTodoHeader.innerHTML = "Edit Project";
+                    newTodoTitle.placeholder = "";
+                    const currentTitle = todoTitle.innerText;
+                    newTodoTitle.value = currentTitle;
+                    form.style.display = "block";
+                    newTodoTitle.focus();
+
+                    // Change Save button functionality to edit
+                    saveTodoBtn.removeEventListener("click", saveTodo);
+                    saveTodoBtn.addEventListener("click", editTodo); 
+                
+                    function editTodo() {
+                        todoTitle.innerHTML = newTodoTitle.value;
+                        const index = todoArray.indexOf(currentTitle);
+                        if (index !== -1) {
+                            todoArray[index] = todoTitle.innerHTML;
+                        }
+                        resetForm();
+                        saveTodoBtn.removeEventListener("click", editTodo);
+                    }
+
+                    // Show Delete button
+                    form.style.padding = "30px 40px 70px 40px";
+                    deleteProjectBtnGroup.style.display = "flex";
+
+                    // Give functionality to delete project
+                    document.querySelector("#delete-todo-btn").addEventListener("click", () => {
+                        const index = todoArray.indexOf(currentTitle);
+                        if (index !== -1) {
+                            todoArray.splice(index, 1);
+                        }
+                        resetForm();
+                        saveTodoBtn.removeEventListener("click", editTodo);
+                    });
+                });
+
+                const editImage = document.createElement("img");
+                editImage.src = "./images/pencil-outline.png";
+
+                editBtn.appendChild(editImage);
+                todoDateEditContainer.appendChild(editBtn);
+
+                todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
                 //todoItemContainer.appendChild(todoItem);
                 todoItemsContainer.appendChild(todoItem);
             }
