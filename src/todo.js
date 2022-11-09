@@ -5,8 +5,9 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["not done", "run", "run description", "date", "High"],
-            ["done", "walk", "walk description", "date", "Low"]
+            ["not done", "run", "run description", "date", "Low"],
+            ["done", "walk", "walk description", "date", "Medium"],
+            ["not done", "hike", "hiking", "date", "High"]
         );
     }
 
@@ -60,10 +61,13 @@ const todos = () => {
             // Set done checkbox color according to priority
             if (todoArray[item][4] == "Low") {
                 done.style.border = "solid var(--pewter-blue) 4px";
+                done.style.backgroundColor = "var(--light-pewter-blue)";
             } else if (todoArray[item][4] == "Medium") {
                 done.style.border = "solid var(--jasmine) 4px";
+                done.style.backgroundColor = "var(--light-jasmine)";
             } else if (todoArray[item][4] == "High") {
                 done.style.border = "solid var(--tomato) 4px";
+                done.style.backgroundColor = "var(--light-tomato)";
             }
 
             // todoDatePriorityContainer.appendChild(priority);
