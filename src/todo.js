@@ -100,9 +100,9 @@ const todos = () => {
                 const editBtn = document.createElement("button");
                 editBtn.classList.add("edit-btn");
                 editBtn.addEventListener("click", () => {
-                    addTodoHeader.innerHTML = "Edit Project";
+                    addTodoHeader.innerHTML = "Edit Todo";
                     newTodoTitle.placeholder = "";
-                    const currentTitle = todoTitle.innerText;
+                    const currentTitle = title.innerText;
                     newTodoTitle.value = currentTitle;
                     form.style.display = "block";
                     newTodoTitle.focus();
@@ -112,18 +112,18 @@ const todos = () => {
                     saveTodoBtn.addEventListener("click", editTodo); 
                 
                     function editTodo() {
-                        todoTitle.innerHTML = newTodoTitle.value;
+                        title.innerHTML = newTodoTitle.value;
                         const index = todoArray.indexOf(currentTitle);
                         if (index !== -1) {
-                            todoArray[index] = todoTitle.innerHTML;
+                            todoArray[index] = title.innerHTML;
                         }
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
                     }
 
                     // Show Delete button
-                    form.style.padding = "30px 40px 70px 40px";
-                    deleteProjectBtnGroup.style.display = "flex";
+                    form.style.padding = "30px 40px 90px 40px";
+                    deleteTodoBtnGroup.style.display = "flex";
 
                     // Give functionality to delete project
                     document.querySelector("#delete-todo-btn").addEventListener("click", () => {

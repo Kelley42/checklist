@@ -262,7 +262,7 @@ nav li:hover,
     background-color: var(--pewter-blue);
 }
 
-#delete-project-btn
+#delete-project-btn,
 #delete-todo-btn {
     background-color: var(--tomato);
 }

@@ -39,7 +39,7 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
-                
+
                 // Show Delete button
                 form.style.padding = "30px 40px 70px 40px";
                 deleteProjectBtnGroup.style.display = "flex";
@@ -97,8 +97,7 @@ const addProject = () => {
         saveProjectBtn.addEventListener("click", saveProject);
 
         // Don't show Delete button
-        deleteProjectBtnGroup.style.display = "none";
-        
+        deleteProjectBtnGroup.style.display = "none";   
     }
 
     const addProject = document.querySelector("#add-project");
