@@ -359,6 +359,15 @@ nav li:hover,
     justify-content: space-between;
     background-color: var(--light-white-chocolate);
     padding: 10px;
+    /* transition: opacity 1s ease, transform 1s ease;
+    opacity: 0;
+    transform: translateY(-1000px); */
+}
+
+.hidden-item {
+    opacity: 0;
+    transition: opacity 2s ease, transform 2s ease;
+    transform: translateX(-1000px); 
 }
 
 .done {
