@@ -5,9 +5,9 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["not done", "run", "run description", "date", "Low"],
-            ["not done", "walk", "walk description", "date", "Medium"],
-            ["not done", "hike", "hiking", "date", "High"]
+            ["not done", "run", "run description", "12-31-2029", "Low"],
+            ["not done", "walk", "walk description", "11-08-2022", "Medium"],
+            ["not done", "hike", "hiking", "03-14-2023", "High"]
         );
     }
 
