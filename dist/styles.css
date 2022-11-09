@@ -311,6 +311,7 @@ nav li:hover,
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
 }
 
 .todo-title {
@@ -322,6 +323,7 @@ nav li:hover,
     background-color: var(--white-chocolate);
     border: none;
     font-size: xx-large;
+    cursor: pointer;
 }
 
 .todo-items-container {
@@ -330,7 +332,6 @@ nav li:hover,
     /* border: solid var(--pewter-blue); */
     /* background-color: var(--light-white-chocolate); */
     gap: 2px;
-    padding: 5px;
 }
 
 .todo-done-title-descrip-container {
@@ -363,8 +364,10 @@ nav li:hover,
 .done {
     width: 30px;
     height: 30px;
-    /* border: solid var(--pewter-blue) 4px;
-    background-color: var(--light-pewter-blue); */
+    /* appearance: none; */
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold
 }
 
 .title {

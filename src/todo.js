@@ -6,7 +6,7 @@ const todos = () => {
         // Add initial todos
         todoArray.push(
             ["not done", "run", "run description", "date", "Low"],
-            ["done", "walk", "walk description", "date", "Medium"],
+            ["not done", "walk", "walk description", "date", "Medium"],
             ["not done", "hike", "hiking", "date", "High"]
         );
     }
@@ -30,9 +30,22 @@ const todos = () => {
             const todoDoneTitleDescripContainer = document.createElement("div");
             todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
 
+            // const done = document.createElement("input");
+            // done.type = "checkbox";
             const done = document.createElement("button");
             done.type = "button";
             done.classList.add("done");
+            done.addEventListener("click", checkDone);
+
+            function checkDone() {
+                if (todoArray[item][0] == "not done") {
+                    todoArray[item][0] = "done"
+                    done.innerHTML = "✓";
+                } else {
+                    todoArray[item][0] = "not done"
+                    done.innerHTML = "";
+                }
+            }
             //done.innerHTML = todoArray[item][0];
             todoDoneTitleDescripContainer.appendChild(done);
 
@@ -64,12 +77,15 @@ const todos = () => {
             // Set done checkbox color according to priority
             if (todoArray[item][4] == "Low") {
                 done.style.border = "solid var(--pewter-blue) 4px";
+                // done.style.accentColor = "var(--light-pewter-blue)";
                 done.style.backgroundColor = "var(--light-pewter-blue)";
             } else if (todoArray[item][4] == "Medium") {
                 done.style.border = "solid var(--jasmine) 4px";
+                // done.style.accentColor = "var(--light-jasmine)";
                 done.style.backgroundColor = "var(--light-jasmine)";
             } else if (todoArray[item][4] == "High") {
                 done.style.border = "solid var(--tomato) 4px";
+                // done.style.accentColor = "var(--light-tomato)";
                 done.style.backgroundColor = "var(--light-tomato)";
             }
     
