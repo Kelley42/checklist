@@ -292,6 +292,11 @@ nav li:hover,
     height: 25px;
 }
 
+.todo-inputs:focus {
+    outline: none;
+    border: solid var(--pewter-blue);
+}
+
 #todo-subfield {
     display: flex;
 }
@@ -359,9 +364,6 @@ nav li:hover,
     justify-content: space-between;
     background-color: var(--light-white-chocolate);
     padding: 10px;
-    /* transition: opacity 1s ease, transform 1s ease;
-    opacity: 0;
-    transform: translateY(-1000px); */
 }
 
 .hidden-item {
@@ -385,6 +387,10 @@ nav li:hover,
 } 
 
 .description {
+    font-size: small;
+}
+
+.date {
     font-size: small;
 }
 
