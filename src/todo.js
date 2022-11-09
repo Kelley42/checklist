@@ -16,92 +16,94 @@ const todos = () => {
         // todoItemContainer.classList.add("todo-item-container");
     
         for (const item in todoArray) {
+
+            // Only show "not done" todos
             if (todoArray[item][0] == "not done") {
-            const todoItem = document.createElement("div");
-            todoItem.classList.add("item");
-            // Odd-numbered item has white background
-            // if (item % 2 == 0) {
-            //     todoItem.style.backgroundColor = "var(--light-white-chocolate)";
-            // } else {
-            //     todoItem.style.backgroundColor = "var(--white-chocolate)";
-            //     todoItem.style.padding = "20px;"
-            // }
+                const todoItem = document.createElement("div");
+                todoItem.classList.add("item");
+                // Odd-numbered item has white background
+                // if (item % 2 == 0) {
+                //     todoItem.style.backgroundColor = "var(--light-white-chocolate)";
+                // } else {
+                //     todoItem.style.backgroundColor = "var(--white-chocolate)";
+                //     todoItem.style.padding = "20px;"
+                // }
 
-            // Style Done and Title-Description container horizontally
-            const todoDoneTitleDescripContainer = document.createElement("div");
-            todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
+                // Style Done and Title-Description container horizontally
+                const todoDoneTitleDescripContainer = document.createElement("div");
+                todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
 
-            // const done = document.createElement("input");
-            // done.type = "checkbox";
-            const done = document.createElement("button");
-            done.type = "button";
-            done.classList.add("done");
-            done.addEventListener("click", checkDone);
+                // const done = document.createElement("input");
+                // done.type = "checkbox";
+                const done = document.createElement("button");
+                done.type = "button";
+                done.classList.add("done");
+                done.addEventListener("click", checkDone);
 
-            function checkDone() {
-                // Add/remove checkmark
-                if (todoArray[item][0] == "not done") {
-                    todoArray[item][0] = "done"
-                    done.innerHTML = "✓";
-                } else {
-                    todoArray[item][0] = "not done"
-                    done.innerHTML = "";
+                function checkDone() {
+                    // Add/remove checkmark
+                    if (todoArray[item][0] == "not done") {
+                        todoArray[item][0] = "done"
+                        done.innerHTML = "✓";
+                    } else {
+                        todoArray[item][0] = "not done"
+                        done.innerHTML = "";
+                    }
+
+                    // Remove item
+                    todoItem.classList.toggle("hidden-item");
+                    setTimeout(() => {
+                        todoItemsContainer.innerHTML = "";
+                        showTodos();
+                    }, "2000");
                 }
+                //done.innerHTML = todoArray[item][0];
+                todoDoneTitleDescripContainer.appendChild(done);
 
-                // Remove item
-                todoItem.classList.toggle("hidden-item");
-                setTimeout(() => {
-                    todoItemsContainer.innerHTML = "";
-                    showTodos();
-                }, "2000")
-            }
-            //done.innerHTML = todoArray[item][0];
-            todoDoneTitleDescripContainer.appendChild(done);
-
-            // Style Title and Description vertically
-            const todoTitleDescriptionContainer = document.createElement("div");
-            todoTitleDescriptionContainer.classList.add("todo-title-description-container");
+                // Style Title and Description vertically
+                const todoTitleDescriptionContainer = document.createElement("div");
+                todoTitleDescriptionContainer.classList.add("todo-title-description-container");
     
-            const title = document.createElement("h2");
-            title.classList.add("title");
-            title.innerHTML = todoArray[item][1];
-            todoTitleDescriptionContainer.appendChild(title);
+                const title = document.createElement("h2");
+                title.classList.add("title");
+                title.innerHTML = todoArray[item][1];
+                todoTitleDescriptionContainer.appendChild(title);
+            
+                const description = document.createElement("p");
+                description.classList.add("description");
+                description.innerHTML = todoArray[item][2];
+                todoTitleDescriptionContainer.appendChild(description);
+
+                todoDoneTitleDescripContainer.appendChild(todoTitleDescriptionContainer);
         
-            const description = document.createElement("p");
-            description.classList.add("description");
-            description.innerHTML = todoArray[item][2];
-            todoTitleDescriptionContainer.appendChild(description);
+                // Style Date and Priority vertically
+                const todoDatePriorityContainer = document.createElement("div");
+                todoDatePriorityContainer.classList.add("todo-date-priority-container");
 
-            todoDoneTitleDescripContainer.appendChild(todoTitleDescriptionContainer);
-        
-            // Style Date and Priority vertically
-            const todoDatePriorityContainer = document.createElement("div");
-            todoDatePriorityContainer.classList.add("todo-date-priority-container");
+                const date = document.createElement("p");
+                date.classList.add("date");
+                date.innerHTML = todoArray[item][3];
+                todoDatePriorityContainer.appendChild(date);
 
-            const date = document.createElement("p");
-            date.classList.add("date");
-            date.innerHTML = todoArray[item][3];
-            todoDatePriorityContainer.appendChild(date);
-
-            // Set done checkbox color according to priority
-            if (todoArray[item][4] == "Low") {
-                done.style.border = "solid var(--pewter-blue) 4px";
-                // done.style.accentColor = "var(--light-pewter-blue)";
-                done.style.backgroundColor = "var(--light-pewter-blue)";
-            } else if (todoArray[item][4] == "Medium") {
-                done.style.border = "solid var(--jasmine) 4px";
-                // done.style.accentColor = "var(--light-jasmine)";
-                done.style.backgroundColor = "var(--light-jasmine)";
-            } else if (todoArray[item][4] == "High") {
-                done.style.border = "solid var(--tomato) 4px";
-                // done.style.accentColor = "var(--light-tomato)";
-                done.style.backgroundColor = "var(--light-tomato)";
-            }
+                // Set done checkbox color according to priority
+                if (todoArray[item][4] == "Low") {
+                    done.style.border = "solid var(--pewter-blue) 4px";
+                    // done.style.accentColor = "var(--light-pewter-blue)";
+                    done.style.backgroundColor = "var(--light-pewter-blue)";
+                } else if (todoArray[item][4] == "Medium") {
+                    done.style.border = "solid var(--jasmine) 4px";
+                    // done.style.accentColor = "var(--light-jasmine)";
+                    done.style.backgroundColor = "var(--light-jasmine)";
+                } else if (todoArray[item][4] == "High") {
+                    done.style.border = "solid var(--tomato) 4px";
+                    // done.style.accentColor = "var(--light-tomato)";
+                    done.style.backgroundColor = "var(--light-tomato)";
+                }
     
-            todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
-            //todoItemContainer.appendChild(todoItem);
-            todoItemsContainer.appendChild(todoItem);
-        }
+                todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
+                //todoItemContainer.appendChild(todoItem);
+                todoItemsContainer.appendChild(todoItem);
+            }
         }
         //return todoItemContainer;
     };
