@@ -11,8 +11,10 @@
     --bone: #E1D6C5;
     --cinereous: #9D8887;
     --light-pewter-blue: #E1EBEC;
-    --light-jasmine: #ece4d3;
-    --light-tomato: #e4d0cd;
+    --light-jasmine: #f1e8d5;
+    --light-tomato: #e7d9d6;
+    /* --light-white-chocolate: #f7f3ef; */
+    --light-white-chocolate: #f3eee8;
 }
 
 html {
@@ -325,31 +327,37 @@ nav li:hover,
 .todo-items-container {
     display: flex;
     flex-direction: column;
-    border: solid var(--pewter-blue);
-    gap: 10px;
+    /* border: solid var(--pewter-blue); */
+    /* background-color: var(--light-white-chocolate); */
+    gap: 2px;
+    padding: 5px;
 }
 
 .todo-done-title-descrip-container {
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 
 .todo-title-description-container {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 
 .title,
 .description,
 .date,
 .priority {
-    border: solid green;
+    /* border: solid green; */
 }
 
 .item {
-    border: solid var(--jasmine);
+    /* border: solid var(--jasmine); */
     display: flex;
     justify-content: space-between;
+    background-color: var(--light-white-chocolate);
+    padding: 10px;
 }
 
 .done {
@@ -360,8 +368,8 @@ nav li:hover,
 }
 
 .title {
-    font-size: medium;
-    font-weight: normal;
+    font-size: large;
+    font-weight: bold;
 } 
 
 .description {
