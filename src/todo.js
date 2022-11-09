@@ -18,6 +18,13 @@ const todos = () => {
         for (const item in todoArray) {
             const todoItem = document.createElement("div");
             todoItem.classList.add("item");
+            // Odd-numbered item has white background
+            // if (item % 2 == 0) {
+            //     todoItem.style.backgroundColor = "var(--light-white-chocolate)";
+            // } else {
+            //     todoItem.style.backgroundColor = "var(--white-chocolate)";
+            //     todoItem.style.padding = "20px;"
+            // }
 
             // Style Done and Title-Description container horizontally
             const todoDoneTitleDescripContainer = document.createElement("div");
@@ -53,10 +60,6 @@ const todos = () => {
             date.classList.add("date");
             date.innerHTML = todoArray[item][3];
             todoDatePriorityContainer.appendChild(date);
-    
-            // const priority = document.createElement("p");
-            // priority.classList.add("priority");
-            // priority.innerHTML = todoArray[item][4];
 
             // Set done checkbox color according to priority
             if (todoArray[item][4] == "Low") {
@@ -69,8 +72,6 @@ const todos = () => {
                 done.style.border = "solid var(--tomato) 4px";
                 done.style.backgroundColor = "var(--light-tomato)";
             }
-
-            // todoDatePriorityContainer.appendChild(priority);
     
             todoItem.append(todoDoneTitleDescripContainer, todoDatePriorityContainer);
             //todoItemContainer.appendChild(todoItem);
