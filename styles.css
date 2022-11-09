@@ -83,6 +83,8 @@ main {
     background-color: var(--white-chocolate);
 }
 
+/* navbar */
+
 nav {
     position: fixed;
     height: calc(100% - 10vh);
@@ -180,6 +182,8 @@ nav li:hover,
     height: 100px;
 }
 
+/* new project form */
+
 .new-project-form {
     position: absolute;
     top: 50%;
@@ -263,6 +267,8 @@ nav li:hover,
     background-color: var(--tomato);
 }
 
+/* new todo form */
+
 .new-todo-form {
     position: absolute;
     top: 50%;
@@ -300,6 +306,8 @@ nav li:hover,
 #todo-subfield {
     display: flex;
 }
+
+/* todos */
 
 #content {
     width: min(100%, 800px);
@@ -353,8 +361,7 @@ nav li:hover,
 
 .title,
 .description,
-.date,
-.priority {
+.date {
     /* border: solid green; */
 }
 
@@ -392,6 +399,22 @@ nav li:hover,
 
 .date {
     font-size: small;
+}
+
+.todo-date-edit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.todo-date-edit-container button {
+    background-color: var(--light-white-chocolate);
+    cursor: pointer;
+}
+
+.todo-date-edit-container img {
+    width: 20px;
+    height: auto;
 }
 
 /* .hidden{
