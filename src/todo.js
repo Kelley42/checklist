@@ -104,8 +104,10 @@ const todos = () => {
                     newTodoTitle.placeholder = "";
                     const currentTitle = title.innerText;
                     const currentDescription = description.innerHTML;
+                    const currentPriority = todoArray[item][4];
                     newTodoTitle.value = currentTitle;
                     newTodoDescription.value = currentDescription;
+                    newTodoPriority.value = currentPriority;
                     form.style.display = "block";
                     newTodoTitle.focus();
 
@@ -170,8 +172,7 @@ const todos = () => {
 
     function saveTodo() {
         // Switch date to MM/DD/YYYY
-        const yearFirstDate = newTodoDate.value;
-        const [year, month, day] = yearFirstDate.split("-");
+        const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("-");
 
         todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value]);
