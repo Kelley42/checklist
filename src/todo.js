@@ -110,6 +110,7 @@ const todos = () => {
                     newTodoPriority.value = currentPriority;
                     form.style.display = "block";
                     newTodoTitle.focus();
+                    console.log(item)
 
                     // Change Save button functionality to edit
                     saveTodoBtn.removeEventListener("click", saveTodo);
@@ -126,12 +127,16 @@ const todos = () => {
                     form.style.padding = "30px 40px 90px 40px";
                     deleteTodoBtnGroup.style.display = "flex";
 
-                    // Give functionality to delete project
+                    // Create variable so will only delete one item at a time
+                    let notFound = true;
+                    // Give functionality to delete todo
                     document.querySelector("#delete-todo-btn").addEventListener("click", () => {
-                        console.log(item)
-                        //const index = todoArray.indexOf(item);
-                        if (item !== -1) {
+                        // const index = todoArray.indexOf(item);
+                        // console.log(index)
+                        // const index = todoArray.findIndex(e => e.id === item[id]);
+                        if (item !== -1 && notFound == true) {
                             todoArray.splice(item, 1);
+                            notFound = false;
                         }
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
@@ -171,11 +176,12 @@ const todos = () => {
     }
 
     function saveTodo() {
+        id += 1;
         // Switch date to MM/DD/YYYY
         const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("-");
 
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, id]);
         resetForm();
     }
 
@@ -227,6 +233,9 @@ const todos = () => {
     const saveTodoBtn = document.querySelector("#save-todo-btn");
     
     const deleteTodoBtnGroup = document.querySelector("#delete-todo-btn-group");
+
+    // Set id for each item
+    const id = 0;
 
     addTodoToArray();
     hideAddTodoForm();
