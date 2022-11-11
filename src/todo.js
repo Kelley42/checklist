@@ -1,3 +1,5 @@
+import { addProject } from './add-project';
+
 const todos = () => {
 
     let todoArray = [];
@@ -110,7 +112,6 @@ const todos = () => {
                     newTodoPriority.value = currentPriority;
                     form.style.display = "block";
                     newTodoTitle.focus();
-                    console.log(item)
 
                     // Change Save button functionality to edit
                     saveTodoBtn.removeEventListener("click", saveTodo);
@@ -126,6 +127,9 @@ const todos = () => {
                     // Show Delete button
                     form.style.padding = "30px 40px 90px 40px";
                     deleteTodoBtnGroup.style.display = "flex";
+
+                    // Show Project input
+                    document.querySelector("#todo-project-field").style.display = "flex";
 
                     // Create variable so will only delete one item at a time
                     let notFound = true;
@@ -167,6 +171,9 @@ const todos = () => {
 
         // Don't show Delete button
         deleteTodoBtnGroup.style.display = "none";
+
+        // Don't show Project input
+        document.querySelector("#todo-project-field").style.display = "none";
     }
 
     function hideAddTodoForm() {
