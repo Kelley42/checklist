@@ -343,12 +343,8 @@ nav li:hover,
     width: 200px;
 }
 
-.todo-dropdowns:hover {
-}
-
 #new-todo-date {
 }
-
 
 #todo-project-field {
     display: flex;
