@@ -197,11 +197,13 @@ nav li:hover,
 }
 
 .new-project,
-.new-todo,
-#todo-inputs-container {
+.new-todo {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.new-project {
     gap: 20px;
 }
 
@@ -281,17 +283,26 @@ nav li:hover,
     z-index: 3;
 }
 
+.new-todo {
+    gap: 10px;
+}
+
 #todo-inputs-container {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
 }
 
 .todo-input-field {
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
+    padding: 0 5px;
     outline: none;
     width: 90%;
-    font-size: large;
+    font-size: small;
 }
 
 .todo-inputs {
@@ -304,6 +315,10 @@ nav li:hover,
 }
 
 #todo-subfield {
+    display: flex;
+}
+
+#todo-subfield2 {
     display: flex;
 }
 
