@@ -10,3 +10,5 @@ navbarButton.addEventListener("click", () => {
 
 todos();
 addProject();
+
+//console.log(addProject.projectArray)

@@ -100,6 +100,15 @@ const addProject = () => {
         deleteProjectBtnGroup.style.display = "none";   
     }
 
+    function showProjectDropdown() {
+        projectArray.forEach((i) => {
+            const newProject = document.createElement("option");
+            newProject.value = i;
+            newProject.innerHTML = i;
+            document.querySelector("#new-todo-project").appendChild(newProject);
+        })
+    }
+
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form");
@@ -125,8 +134,9 @@ const addProject = () => {
     hideAddProjectForm();
     addProjectToArray();
     showProjects();
+    showProjectDropdown();
 
-    window.completeProjectArray = projectArray;
+    //window.completeProjectArray = projectArray;
 };
 
 export { addProject };
