@@ -125,6 +125,8 @@ const addProject = () => {
     hideAddProjectForm();
     addProjectToArray();
     showProjects();
+
+    window.completeProjectArray = projectArray;
 };
 
 export { addProject };

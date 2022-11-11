@@ -1,5 +1,3 @@
-import { addProject } from './add-project';
-
 const todos = () => {
 
     let todoArray = [];
@@ -131,6 +129,10 @@ const todos = () => {
                     // Show Project input
                     document.querySelector("#todo-project-field").style.display = "flex";
 
+                    const newOption = document.createElement("option");
+                    newOption.value = "New Project";
+                    newOption.innerHTML = "New Project";
+
                     // Create variable so will only delete one item at a time
                     let notFound = true;
                     // Give functionality to delete todo
@@ -183,12 +185,11 @@ const todos = () => {
     }
 
     function saveTodo() {
-        id += 1;
         // Switch date to MM/DD/YYYY
         const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("-");
 
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, id]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value]);
         resetForm();
     }
 
@@ -241,8 +242,6 @@ const todos = () => {
     
     const deleteTodoBtnGroup = document.querySelector("#delete-todo-btn-group");
 
-    // Set id for each item
-    const id = 0;
 
     addTodoToArray();
     hideAddTodoForm();
