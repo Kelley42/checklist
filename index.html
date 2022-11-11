@@ -58,26 +58,26 @@
             </div>
             <div class="todo-input-field" id="todo-description-field">Description
               <label for="new-todo-description"></label>
-              <input type="text" class="todo-inputs" id="new-todo-description" name="new-todo-description" placeholder= "Todo Desciption" autocomplete="off" maxlength="25" required>
+              <input type="text" class="todo-inputs" id="new-todo-description" name="new-todo-description" placeholder= "Todo Description" autocomplete="off" maxlength="25" required>
             </div>
             <div id="todo-subfield">
-              <div class="todo-input-field" id="todo-date-field">Date
+              <div class="todo-dropdown-field" id="todo-date-field">Due Date
                 <label for="new-todo-date"></label>
-                <input type="date" class="todo-inputs" id="new-todo-date" name="new-todo-date" placeholder= "MM/DD/YYYY" autocomplete="off"  maxlength="8">
+                <input type="date" class="todo-dropdowns" id="new-todo-date" name="new-todo-date" placeholder= "MM/DD/YYYY" autocomplete="off"  maxlength="8">
               </div>
-              <div class="todo-input-field" id="todo-priority-field">Priority
+            </div>
+            <div id="todo-subfield2">
+              <div class="todo-dropdown-field priority-project" id="todo-priority-field">Priority
                 <label for="new-todo-priority"></label>
-                <select name="new-todo-priority" class="todo-inputs" id="new-todo-priority">
+                <select name="new-todo-priority" class="todo-dropdowns" id="new-todo-priority">
                   <option value="Low">Low</option>
                   <option value="Medium">Medium</option>
                   <option value="High">High</option>
                 </select>
               </div>
-            </div>
-            <div id="todo-subfield2">
-              <div class="todo-input-field" id="todo-project-field">Project Folder
+              <div class="todo-dropdown-field priority-project" id="todo-project-field">Location
                 <label for="new-todo-project"></label>
-                <select name="new-todo-project" class="todo-inputs" id="new-todo-project">
+                <select name="new-todo-project" class="todo-dropdowns" id="new-todo-project">
                   <option value="Inbox">Inbox</option>
                 </select>
               </div>
