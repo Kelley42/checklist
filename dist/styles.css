@@ -299,13 +299,13 @@ nav li:hover,
 .todo-input-field {
     display: flex;
     flex-direction: column;
-    padding: 0 5px;
     outline: none;
-    width: 90%;
+    width: 100%;
     font-size: small;
 }
 
-.todo-inputs {
+.todo-inputs,
+.todo-dropdowns {
     height: 25px;
 }
 
@@ -320,6 +320,49 @@ nav li:hover,
 
 #todo-subfield2 {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    /* border: solid green */
+}
+
+.todo-dropdown-field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    outline: none;
+    font-size: small;
+    /* border: solid purple */
+}
+
+.todo-dropdowns {
+}
+
+.priority-project {
+    width: 200px;
+}
+
+.todo-dropdowns:hover {
+}
+
+#new-todo-date {
+}
+
+
+#todo-project-field {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#new-todo-project {
+    height: 25px;
+}
+
+#new-todo-priority,
+#new-todo-project {
+    padding: 3px;
+    width: 100px;
 }
 
 /* todos */
