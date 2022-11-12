@@ -63,6 +63,30 @@ const addProject = () => {
             projectTitleContainer.appendChild(projectTitle);
             projectLinksContainer.appendChild(projectTitleContainer);
         })
+
+        // Update location dropdown in edit todo form
+        function showProjectDropdown() {
+
+            // Make sure dropdown refreshed and empty
+            const newTodoProjectDropdown = document.querySelector("#new-todo-project");
+            newTodoProjectDropdown.innerHTML = "";
+
+            // Create initial inbox option
+            const inboxProject = document.createElement("option");
+            inboxProject.value = "Inbox";
+            inboxProject.innerHTML = "Inbox";
+            newTodoProjectDropdown.appendChild(inboxProject);
+            console.log(newTodoProjectDropdown)
+
+            // Add custom projects
+            projectArray.forEach((i) => {
+                const newProject = document.createElement("option");
+                newProject.value = i;
+                newProject.innerHTML = i;
+                newTodoProjectDropdown.appendChild(newProject);
+            })
+        }
+        showProjectDropdown();
     }
 
     function saveProject() {
@@ -100,15 +124,6 @@ const addProject = () => {
         deleteProjectBtnGroup.style.display = "none";   
     }
 
-    function showProjectDropdown() {
-        projectArray.forEach((i) => {
-            const newProject = document.createElement("option");
-            newProject.value = i;
-            newProject.innerHTML = i;
-            document.querySelector("#new-todo-project").appendChild(newProject);
-        })
-    }
-
     const addProject = document.querySelector("#add-project");
     addProject.addEventListener("click", showAddProjectForm);
     const form = document.querySelector(".new-project-form");
@@ -134,7 +149,6 @@ const addProject = () => {
     hideAddProjectForm();
     addProjectToArray();
     showProjects();
-    showProjectDropdown();
 
     //window.completeProjectArray = projectArray;
 };
