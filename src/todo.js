@@ -192,7 +192,7 @@ const todos = () => {
         const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("-");
 
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, newTodoLocation.value]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, "Inbox"]);
         resetForm();
     }
 
@@ -250,6 +250,52 @@ const todos = () => {
     addTodoToArray();
     hideAddTodoForm();
     showTodos();
+
+    console.log(todoArray)
+
+    // const inboxTab = document.querySelector("#inbox-tab");
+    // inboxTab.addEventListener("click", () => {
+    //     reset();
+    //     showTodos();
+    // });
+    // const todayTab = document.querySelector("#today-tab");
+    // todayTab.addEventListener("click", () => {
+    //     reset();
+    //     today();
+    // });
+    // const weekTab = document.querySelector("#week-tab");
+    // weekTab.addEventListener("click", () => {
+    //     reset();
+    //     week();
+    // });
+
+    // function reset() {
+    //     content.innerHTML = "";
+    //     content.classList = "";
+    // };
+
+
+    // const inboxTab = document.querySelector("#inbox-tab");
+    // inboxTab.addEventListener("click", () => {
+    //     reset();
+    //     todos();
+    // });
+    // const todayTab = document.querySelector("#today-tab");
+    // todayTab.addEventListener("click", () => {
+    //     reset();
+    //     today();
+    // });
+    // const weekTab = document.querySelector("#week-tab");
+    // weekTab.addEventListener("click", () => {
+    //     reset();
+    //     week();
+    // });
+
+    // function reset() {
+    //     const currentContent = document.querySelector("#content");
+    //     currentContent.innerHTML = "";
+    //     currentContent.classList = "";
+    // };
 };
 
 export { todos };

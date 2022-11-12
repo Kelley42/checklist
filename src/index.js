@@ -7,8 +7,7 @@ navbarButton.addEventListener("click", () => {
     navbarContainer.classList.toggle("visible");
 });
 
-
 todos();
 addProject();
 
-//console.log(addProject.projectArray)
+
