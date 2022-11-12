@@ -70,6 +70,7 @@ header button{
     border: none;
     margin: 5px;
     position: absolute;
+    cursor: pointer;
 }
 
 header img{
@@ -107,6 +108,7 @@ nav {
 nav li {
     list-style: none;
     padding: 8px 5px;
+    cursor: pointer;
 }
 
 #navbar-top ul{
@@ -155,6 +157,7 @@ nav li:hover,
     justify-content: space-between;
     font-size: large;
     padding: 0 5px;
+    cursor: pointer;
     /* flex-wrap: wrap;
     word-wrap: break-word;
     word-break: break-word; */
@@ -168,6 +171,7 @@ nav li:hover,
     align-items: center;
     background-color: var(--bone);
     border: none;
+    cursor: pointer;
 }
 
 #project-links img {
