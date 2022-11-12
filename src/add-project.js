@@ -76,7 +76,6 @@ const addProject = () => {
             inboxProject.value = "Inbox";
             inboxProject.innerHTML = "Inbox";
             newTodoProjectDropdown.appendChild(inboxProject);
-            console.log(newTodoProjectDropdown)
 
             // Add custom projects
             projectArray.forEach((i) => {
@@ -150,7 +149,6 @@ const addProject = () => {
     addProjectToArray();
     showProjects();
 
-    //window.completeProjectArray = projectArray;
 };
 
 export { addProject };

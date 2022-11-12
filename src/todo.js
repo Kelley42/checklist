@@ -5,9 +5,9 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["not done", "run", "run description", "12-31-2029", "Low"],
-            ["not done", "walk", "walk description", "11-08-2022", "Medium"],
-            ["not done", "hike", "hiking", "03-14-2023", "High"]
+            ["not done", "run", "run description", "12-31-2029", "Low", "Inbox"],
+            ["not done", "walk", "walk description", "11-08-2022", "Medium", "Inbox"],
+            ["not done", "hike", "hiking", "03-14-2023", "High", "Inbox"]
         );
     }
 
@@ -17,8 +17,8 @@ const todos = () => {
     
         for (const item in todoArray) {
 
-            // Only show "not done" todos
-            if (todoArray[item][0] == "not done") {
+            // Only show "not done" and inbox todos
+            if (todoArray[item][0] == "not done" && todoArray[item][5] == "Inbox") {
                 const todoItem = document.createElement("div");
                 todoItem.classList.add("item");
                 // Odd-numbered item has white background
@@ -116,8 +116,11 @@ const todos = () => {
                     saveTodoBtn.addEventListener("click", editTodo); 
                 
                     function editTodo() {
-                        title.innerHTML = newTodoTitle.value;
-                        todoArray[item][1] = title.innerHTML;
+                        todoArray[item][1] = newTodoTitle.value;
+                        todoArray[item][2] = newTodoDescription.value;
+                        todoArray[item][3] = newTodoDate.value;
+                        todoArray[item][4] = newTodoPriority.value;
+                        todoArray[item][5] = newTodoLocation.value;
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
                     }
@@ -127,7 +130,7 @@ const todos = () => {
                     deleteTodoBtnGroup.style.display = "flex";
 
                     // Show Project input
-                    document.querySelector("#todo-project-field").style.display = "flex";
+                    newTodoLocation.style.display = "flex";
 
                     const newOption = document.createElement("option");
                     newOption.value = "New Project";
@@ -175,7 +178,7 @@ const todos = () => {
         deleteTodoBtnGroup.style.display = "none";
 
         // Don't show Project input
-        document.querySelector("#todo-project-field").style.display = "none";
+        newTodoLocation.style.display = "none";
     }
 
     function hideAddTodoForm() {
@@ -189,7 +192,7 @@ const todos = () => {
         const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("-");
 
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, newTodoLocation.value]);
         resetForm();
     }
 
@@ -236,6 +239,7 @@ const todos = () => {
     const newTodoDescription = document.querySelector("#new-todo-description");
     const newTodoDate = document.querySelector("#new-todo-date");
     const newTodoPriority = document.querySelector("#new-todo-priority");
+    const newTodoLocation = document.querySelector("#todo-project-field");
     const cancelTodoBtn = document.querySelector("#cancel-todo-btn");
     cancelTodoBtn.addEventListener("click", hideAddTodoForm);
     const saveTodoBtn = document.querySelector("#save-todo-btn");
