@@ -12,8 +12,6 @@ const todos = () => {
     }
 
     function showTodos() {
-        // const todoItemContainer = document.createElement("div");
-        // todoItemContainer.classList.add("todo-item-container");
         for (const item in todoArray) {  
 
             // Figure out which tab
@@ -45,13 +43,6 @@ const todos = () => {
             function displayTodos() {
                 const todoItem = document.createElement("div");
                 todoItem.classList.add("item");
-                // Odd-numbered item has white background
-                // if (item % 2 == 0) {
-                //     todoItem.style.backgroundColor = "var(--light-white-chocolate)";
-                // } else {
-                //     todoItem.style.backgroundColor = "var(--white-chocolate)";
-                //     todoItem.style.padding = "20px;"
-                // }
 
                 // Style Done and Title-Description container horizontally
                 const todoDoneTitleDescripContainer = document.createElement("div");
@@ -270,7 +261,7 @@ const todos = () => {
     
     const deleteTodoBtnGroup = document.querySelector("#delete-todo-btn-group");
 
-
+    
 
     // Tabs
     function inbox() {
@@ -304,38 +295,19 @@ const todos = () => {
         reset();
         today();
     });
-    // const weekTab = document.querySelector("#week-tab");
-    // weekTab.addEventListener("click", () => {
-    //     reset();
-    //     week();
-    // });
+
+    const weekTab = document.querySelector("#week-tab");
+    weekTab.addEventListener("click", () => {
+        reset();
+        week();
+    });
 
     function reset() {
         todoItemsContainer.innerHTML = "";
+        document.querySelector("#navbar-container").classList.toggle("visible");
     };
 
 
-    // const inboxTab = document.querySelector("#inbox-tab");
-    // inboxTab.addEventListener("click", () => {
-    //     reset();
-    //     todos();
-    // });
-    // const todayTab = document.querySelector("#today-tab");
-    // todayTab.addEventListener("click", () => {
-    //     reset();
-    //     today();
-    // });
-    // const weekTab = document.querySelector("#week-tab");
-    // weekTab.addEventListener("click", () => {
-    //     reset();
-    //     week();
-    // });
-
-    // function reset() {
-    //     const currentContent = document.querySelector("#content");
-    //     currentContent.innerHTML = "";
-    //     currentContent.classList = "";
-    // };
     addTodoToArray();
     hideAddTodoForm();
     inbox();
