@@ -241,7 +241,6 @@ const todos = () => {
 
     const todoTitle = document.createElement("h2");
     todoTitle.classList.add("todo-title");
-    todoTitle.innerHTML = "Inbox";
     todoHeader.appendChild(todoTitle);
 
     const addTodoBtn = document.createElement("button");
@@ -276,16 +275,19 @@ const todos = () => {
     // Tabs
     function inbox() {
         whichTab = "Inbox";
+        todoTitle.innerHTML = "Inbox";
         showTodos();
     }
 
     function today() {
         whichTab = "Today";
+        todoTitle.innerHTML = "Today";
         showTodos();
     }
 
     function week() {
         whichTab = "Week";
+        todoTitle.innerHTML = "This Week";
         showTodos();
     }
 
@@ -309,8 +311,7 @@ const todos = () => {
     // });
 
     function reset() {
-        content.innerHTML = "";
-        content.classList = "";
+        todoItemsContainer.innerHTML = "";
     };
 
 
