@@ -14,11 +14,35 @@ const todos = () => {
     function showTodos() {
         // const todoItemContainer = document.createElement("div");
         // todoItemContainer.classList.add("todo-item-container");
-    
-        for (const item in todoArray) {
+        for (const item in todoArray) {  
 
-            // Only show "not done" and inbox todos
-            if (todoArray[item][0] == "not done" && todoArray[item][5] == "Inbox") {
+            // Figure out which tab
+            if (whichTab == "Inbox") {
+                // Only show "not done" and inbox todos
+                if (todoArray[item][0] == "not done" && todoArray[item][5] == "Inbox") {
+                    displayTodos();
+                }  
+            } else if (whichTab == "Today") {
+                // Find today's date (from Samuel Meddows on Stackoverflow)
+                let today = new Date();
+                let dd = String(today.getDate()).padStart(2, '0');
+                let mm = String(today.getMonth() + 1).padStart(2, '0');
+                let yyyy = today.getFullYear();
+
+                today = mm + '-' + dd + '-' + yyyy;
+
+                // Only show "not done" and today todos
+                if (todoArray[item][0] == "not done" && todoArray[item][3] == today) {
+                    displayTodos();
+                }  
+            } else if (whichTab == "Week") {
+                // Only show "not done" and this week's todos
+                if (todoArray[item][0] == "not done" && todoArray[item][3] == "thisweek") {
+                    displayTodos();
+                }  
+            }
+              
+            function displayTodos() {
                 const todoItem = document.createElement("div");
                 todoItem.classList.add("item");
                 // Odd-numbered item has white background
@@ -162,6 +186,7 @@ const todos = () => {
                 //todoItemContainer.appendChild(todoItem);
                 todoItemsContainer.appendChild(todoItem);
             }
+            
         }
         //return todoItemContainer;
     };
@@ -247,32 +272,46 @@ const todos = () => {
     const deleteTodoBtnGroup = document.querySelector("#delete-todo-btn-group");
 
 
-    addTodoToArray();
-    hideAddTodoForm();
-    showTodos();
 
-    console.log(todoArray)
+    // Tabs
+    function inbox() {
+        whichTab = "Inbox";
+        showTodos();
+    }
 
-    // const inboxTab = document.querySelector("#inbox-tab");
-    // inboxTab.addEventListener("click", () => {
-    //     reset();
-    //     showTodos();
-    // });
-    // const todayTab = document.querySelector("#today-tab");
-    // todayTab.addEventListener("click", () => {
-    //     reset();
-    //     today();
-    // });
+    function today() {
+        whichTab = "Today";
+        showTodos();
+    }
+
+    function week() {
+        whichTab = "Week";
+        showTodos();
+    }
+
+    let whichTab = "";
+
+    const inboxTab = document.querySelector("#inbox-tab");
+    inboxTab.addEventListener("click", () => {
+        reset();
+        inbox();
+    });
+
+    const todayTab = document.querySelector("#today-tab");
+    todayTab.addEventListener("click", () => {
+        reset();
+        today();
+    });
     // const weekTab = document.querySelector("#week-tab");
     // weekTab.addEventListener("click", () => {
     //     reset();
     //     week();
     // });
 
-    // function reset() {
-    //     content.innerHTML = "";
-    //     content.classList = "";
-    // };
+    function reset() {
+        content.innerHTML = "";
+        content.classList = "";
+    };
 
 
     // const inboxTab = document.querySelector("#inbox-tab");
@@ -296,6 +335,9 @@ const todos = () => {
     //     currentContent.innerHTML = "";
     //     currentContent.classList = "";
     // };
+    addTodoToArray();
+    hideAddTodoForm();
+    inbox();
 };
 
 export { todos };

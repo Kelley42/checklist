@@ -34,6 +34,8 @@ body {
     /* position: fixed; */
     display: grid;
     grid-template-rows: 6vh 1fr 4vh;
+    /* overflow: hidden;
+    position: relative; */
 } 
 
 header, footer {
@@ -376,6 +378,10 @@ nav li:hover,
     border: solid var(--tomato);
     margin-left: auto;
     margin-right: auto;
+    /* overflow-y: auto; */
+    /* position: absolute; */
+    /* overflow-x: hidden;
+    overflow-y: auto; */
 }
 
 .todo-header {
