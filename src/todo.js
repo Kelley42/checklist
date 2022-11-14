@@ -25,16 +25,11 @@ const todos = () => {
                 if (todoArray[item][0] == "not done" && todoArray[item][5] == "Inbox") {
                     displayTodos();
                 }  
-            } else if (whichProject == "Personal") {
-                // Only show "not done" and personal todos
-                if (todoArray[item][0] == "not done" && todoArray[item][5] == "Personal") {
+            } else {
+                // Only show "not done" and not-inbox todos
+                if (todoArray[item][0] == "not done" && todoArray[item][5] == whichProject) {
                     displayTodos();
                 }  
-            } else if (whichProject == "Work") {
-                // Only show "not done" and work todos
-                if (todoArray[item][0] == "not done" && todoArray[item][5] == "Work") {
-                    displayTodos();
-                } 
             }
 
             if (whichDate == "Today") {
