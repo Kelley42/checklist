@@ -7,11 +7,11 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["not done", "run", "run description", "12-31-2029", "Low", "Inbox"],
-            ["not done", "walk", "walk description", "11-08-2022", "Medium", "Inbox"],
-            ["not done", "hike", "hiking", "03-14-2023", "High", "Inbox"],
-            ["not done", "play", "playing", "11-21-2022", "Low", "Personal"],
-            ["not done", "work", "working", "11-21-2022", "High", "Work"],
+            ["not done", "run", "run description", "11-12-2022", "Low", "Inbox"],
+            ["not done", "walk", "walk description", "11-14-2022", "Medium", "Inbox"],
+            ["not done", "hike", "hiking", "11-15-2022", "High", "Inbox"],
+            ["not done", "play", "playing", "11-16-2022", "Low", "Personal"],
+            ["not done", "work", "working", "11-23-2022", "High", "Work"],
         );
     }
 
@@ -32,22 +32,32 @@ const todos = () => {
                 }  
             }
 
+            // Find today's date (from Samuel Meddows on Stackoverflow)
+            let today = new Date();
+            let dd = String(today.getDate()).padStart(2, '0');
+            let mm = String(today.getMonth() + 1).padStart(2, '0');
+            let yyyy = today.getFullYear();
+            today = mm + '-' + dd + '-' + yyyy;
             if (whichDate == "Today") {
-                // Find today's date (from Samuel Meddows on Stackoverflow)
-                let today = new Date();
-                let dd = String(today.getDate()).padStart(2, '0');
-                let mm = String(today.getMonth() + 1).padStart(2, '0');
-                let yyyy = today.getFullYear();
-
-                today = mm + '-' + dd + '-' + yyyy;
-
                 // Only show "not done" and today todos
                 if (todoArray[item][0] == "not done" && todoArray[item][3] == today) {
                     displayTodos();
                 }  
             } else if (whichDate == "Week") {
+                // Figure out date of the week
+                let thisweek = [];
+                for (let i = 0; i < 7; i++) {
+                    let weekday = new Date();
+                    weekday.setDate(weekday.getDate() + i);
+                    let weekdd = String(weekday.getDate()).padStart(2, '0');
+                    let weekmm = String(weekday.getMonth() + 1).padStart(2, '0');
+                    let weekyyyy = weekday.getFullYear();
+                    weekday = weekmm + '-' + weekdd + '-' + weekyyyy;
+                    thisweek.push(weekday);
+                }
+
                 // Only show "not done" and this week's todos
-                if (todoArray[item][0] == "not done" && todoArray[item][3] == "thisweek") {
+                if (todoArray[item][0] == "not done" && thisweek.includes(todoArray[item][3])) {
                     displayTodos();
                 }  
             }
@@ -280,6 +290,7 @@ const todos = () => {
     // Tabs
     const inboxTab = document.querySelector("#inbox-tab");
     inboxTab.addEventListener("click", () => {
+        whichDate = "";
         whichProject = "Inbox";
         todoTitle.innerHTML = "Inbox";
         reset();
@@ -288,6 +299,7 @@ const todos = () => {
 
     const todayTab = document.querySelector("#today-tab");
     todayTab.addEventListener("click", () => {
+        whichProject = "";
         whichDate = "Today";
         todoTitle.innerHTML = "Today";
         reset();
@@ -296,6 +308,7 @@ const todos = () => {
 
     const weekTab = document.querySelector("#week-tab");
     weekTab.addEventListener("click", () => {
+        whichProject = "";
         whichDate = "Week";
         todoTitle.innerHTML = "This Week";
         reset();
@@ -313,6 +326,7 @@ const todos = () => {
         projectTitles.forEach(item => {
             item.classList.add(item.innerText);
             item.addEventListener("click", () => {
+                whichDate = "";
                 whichProject = item.innerText;
                 todoTitle.innerHTML = item.innerText;
                 reset();
