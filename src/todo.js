@@ -1,6 +1,8 @@
 const todos = () => {
 
     let todoArray = [];
+    let whichTab = "Inbox";
+    let whichProject = "";
 
     function addTodoToArray() {
         // Add initial todos
@@ -232,6 +234,7 @@ const todos = () => {
 
     const todoTitle = document.createElement("h2");
     todoTitle.classList.add("todo-title");
+    todoTitle.innerHTML = "Inbox";
     todoHeader.appendChild(todoTitle);
 
     const addTodoBtn = document.createElement("button");
@@ -264,42 +267,29 @@ const todos = () => {
     
 
     // Tabs
-    function inbox() {
-        whichTab = "Inbox";
-        todoTitle.innerHTML = "Inbox";
-        showTodos();
-    }
-
-    function today() {
-        whichTab = "Today";
-        todoTitle.innerHTML = "Today";
-        showTodos();
-    }
-
-    function week() {
-        whichTab = "Week";
-        todoTitle.innerHTML = "This Week";
-        showTodos();
-    }
-
-    let whichTab = "";
 
     const inboxTab = document.querySelector("#inbox-tab");
     inboxTab.addEventListener("click", () => {
+        whichTab = "Inbox";
+        todoTitle.innerHTML = "Inbox";
         reset();
-        inbox();
+        showTodos();
     });
 
     const todayTab = document.querySelector("#today-tab");
     todayTab.addEventListener("click", () => {
+        whichTab = "Today";
+        todoTitle.innerHTML = "Today";
         reset();
-        today();
+        showTodos();
     });
 
     const weekTab = document.querySelector("#week-tab");
     weekTab.addEventListener("click", () => {
+        whichTab = "Week";
+        todoTitle.innerHTML = "This Week";
         reset();
-        week();
+        showTodos();
     });
 
     function reset() {
@@ -307,10 +297,12 @@ const todos = () => {
         document.querySelector("#navbar-container").classList.toggle("visible");
     };
 
+    //Projects
+
 
     addTodoToArray();
     hideAddTodoForm();
-    inbox();
+    showTodos();
 };
 
 export { todos };
