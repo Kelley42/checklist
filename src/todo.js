@@ -1,28 +1,43 @@
 const todos = () => {
 
     let todoArray = [];
-    let whichTab = "Inbox";
-    let whichProject = "";
+    let whichDate = "";
+    let whichProject = "Inbox";
 
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
             ["not done", "run", "run description", "12-31-2029", "Low", "Inbox"],
             ["not done", "walk", "walk description", "11-08-2022", "Medium", "Inbox"],
-            ["not done", "hike", "hiking", "03-14-2023", "High", "Inbox"]
+            ["not done", "hike", "hiking", "03-14-2023", "High", "Inbox"],
+            ["not done", "play", "playing", "11-21-2022", "Low", "Personal"],
+            ["not done", "work", "working", "11-21-2022", "High", "Work"],
         );
     }
 
     function showTodos() {
         for (const item in todoArray) {  
 
-            // Figure out which tab
-            if (whichTab == "Inbox") {
+            // Figure out which project/date
+
+            if (whichProject == "Inbox") {
                 // Only show "not done" and inbox todos
                 if (todoArray[item][0] == "not done" && todoArray[item][5] == "Inbox") {
                     displayTodos();
                 }  
-            } else if (whichTab == "Today") {
+            } else if (whichProject == "Personal") {
+                // Only show "not done" and personal todos
+                if (todoArray[item][0] == "not done" && todoArray[item][5] == "Personal") {
+                    displayTodos();
+                }  
+            } else if (whichProject == "Work") {
+                // Only show "not done" and work todos
+                if (todoArray[item][0] == "not done" && todoArray[item][5] == "Work") {
+                    displayTodos();
+                } 
+            }
+
+            if (whichDate == "Today") {
                 // Find today's date (from Samuel Meddows on Stackoverflow)
                 let today = new Date();
                 let dd = String(today.getDate()).padStart(2, '0');
@@ -35,12 +50,13 @@ const todos = () => {
                 if (todoArray[item][0] == "not done" && todoArray[item][3] == today) {
                     displayTodos();
                 }  
-            } else if (whichTab == "Week") {
+            } else if (whichDate == "Week") {
                 // Only show "not done" and this week's todos
                 if (todoArray[item][0] == "not done" && todoArray[item][3] == "thisweek") {
                     displayTodos();
                 }  
             }
+
               
             function displayTodos() {
                 const todoItem = document.createElement("div");
@@ -267,10 +283,9 @@ const todos = () => {
     
 
     // Tabs
-
     const inboxTab = document.querySelector("#inbox-tab");
     inboxTab.addEventListener("click", () => {
-        whichTab = "Inbox";
+        whichProject = "Inbox";
         todoTitle.innerHTML = "Inbox";
         reset();
         showTodos();
@@ -278,7 +293,7 @@ const todos = () => {
 
     const todayTab = document.querySelector("#today-tab");
     todayTab.addEventListener("click", () => {
-        whichTab = "Today";
+        whichDate = "Today";
         todoTitle.innerHTML = "Today";
         reset();
         showTodos();
@@ -286,7 +301,7 @@ const todos = () => {
 
     const weekTab = document.querySelector("#week-tab");
     weekTab.addEventListener("click", () => {
-        whichTab = "Week";
+        whichDate = "Week";
         todoTitle.innerHTML = "This Week";
         reset();
         showTodos();
@@ -297,11 +312,24 @@ const todos = () => {
         document.querySelector("#navbar-container").classList.toggle("visible");
     };
 
-    //Projects
-
+    // Projects
+    function assignProjectTabs() {
+        const projectTitles = document.querySelectorAll(".project-title");
+        projectTitles.forEach(item => {
+            item.classList.add(item.innerText);
+            item.addEventListener("click", () => {
+                whichProject = item.innerText;
+                todoTitle.innerHTML = item.innerText;
+                reset();
+                showTodos();
+            });
+        });
+    }
+    
 
     addTodoToArray();
     hideAddTodoForm();
+    assignProjectTabs();
     showTodos();
 };
 
