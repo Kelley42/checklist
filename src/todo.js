@@ -7,11 +7,11 @@ const todos = () => {
     function addTodoToArray() {
         // Add initial todos
         todoArray.push(
-            ["not done", "run", "run description", "11-12-2022", "Low", "Inbox"],
-            ["not done", "walk", "walk description", "11-14-2022", "Medium", "Inbox"],
-            ["not done", "hike", "hiking", "11-15-2022", "High", "Inbox"],
-            ["not done", "play", "playing", "11-16-2022", "Low", "Personal"],
-            ["not done", "work", "working", "11-23-2022", "High", "Work"],
+            ["not done", "run", "run description", "11/12/2022", "Low", "Inbox", "2022-11-12"],
+            ["not done", "walk", "walk description", "11/14/2022", "Medium", "Inbox", "2022-11-14"],
+            ["not done", "hike", "hiking", "11/15/2022", "High", "Inbox", "2022-11-15"],
+            ["not done", "play", "playing", "11/16/2022", "Low", "Personal", "2022-11-16"],
+            ["not done", "work", "working", "11/23/2022", "High", "Work", "2022-11-23"],
         );
     }
 
@@ -37,7 +37,7 @@ const todos = () => {
             let dd = String(today.getDate()).padStart(2, '0');
             let mm = String(today.getMonth() + 1).padStart(2, '0');
             let yyyy = today.getFullYear();
-            today = mm + '-' + dd + '-' + yyyy;
+            today = mm + '/' + dd + '/' + yyyy;
             if (whichDate == "Today") {
                 // Only show "not done" and today todos
                 if (todoArray[item][0] == "not done" && todoArray[item][3] == today) {
@@ -52,7 +52,7 @@ const todos = () => {
                     let weekdd = String(weekday.getDate()).padStart(2, '0');
                     let weekmm = String(weekday.getMonth() + 1).padStart(2, '0');
                     let weekyyyy = weekday.getFullYear();
-                    weekday = weekmm + '-' + weekdd + '-' + weekyyyy;
+                    weekday = weekmm + '/' + weekdd + '/' + weekyyyy;
                     thisweek.push(weekday);
                 }
 
@@ -93,7 +93,7 @@ const todos = () => {
                     setTimeout(() => {
                         todoItemsContainer.innerHTML = "";
                         showTodos();
-                    }, "2000");
+                    }, "3000");
                 }
                 //done.innerHTML = todoArray[item][0];
                 todoDoneTitleDescripContainer.appendChild(done);
@@ -140,15 +140,11 @@ const todos = () => {
                 editBtn.addEventListener("click", () => {
                     addTodoHeader.innerHTML = "Edit Todo";
                     newTodoTitle.placeholder = "";
-                    const currentTitle = title.innerText;
-                    const currentDescription = description.innerHTML;
-                    
-                    const currentPriority = todoArray[item][4];
-                    const currentLocation = todoArray[item][5];
-                    newTodoTitle.value = currentTitle;
-                    newTodoDescription.value = currentDescription;
-                    newTodoPriority.value = currentPriority;
-                    newTodoLocation.value = currentLocation;
+                    newTodoTitle.value = title.innerText;
+                    newTodoDescription.value = description.innerHTML;
+                    newTodoDate.value = todoArray[item][6]
+                    newTodoPriority.value = todoArray[item][4];
+                    newTodoLocation.value = todoArray[item][5];
                     form.style.display = "block";
                     newTodoTitle.focus();
 
@@ -159,16 +155,12 @@ const todos = () => {
                     function editTodo() {
                         todoArray[item][1] = newTodoTitle.value;
                         todoArray[item][2] = newTodoDescription.value;
-                        todoArray[item][3] = newTodoDate.value;
+                        const [year, month, day] = newTodoDate.value.split("-");
+                        const newDateFormat = [month, day, year].join("/");
+                        todoArray[item][3] = newDateFormat;
                         todoArray[item][4] = newTodoPriority.value;
                         todoArray[item][5] = document.getElementById("new-todo-project").value;
-                        //const value = e.options[e.selectedIndex].value;
-                        //const text = e.options[e.selectedIndex].text;
-                        //console.log(value)
-                        
-                        //console.log(todoArray[item][5])
-                        //console.log(newTodoLocation[selectedIndex].value)
-                        //console.log(newTodoLocation.target.options[newTodoLocation.target.selectedIndex].text)
+                        todoArray[item][6] = newTodoDate.value;
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
                     }
@@ -239,9 +231,9 @@ const todos = () => {
     function saveTodo() {
         // Switch date to MM/DD/YYYY
         const [year, month, day] = newTodoDate.value.split("-");
-        const newDateFormat = [month, day, year].join("-");
-
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, newTodoLocation.value]);
+        const newDateFormat = [month, day, year].join("/");
+        
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, newTodoLocation.value, newTodoDate.value]);
         resetForm();
     }
 
