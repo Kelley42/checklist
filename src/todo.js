@@ -142,10 +142,13 @@ const todos = () => {
                     newTodoTitle.placeholder = "";
                     const currentTitle = title.innerText;
                     const currentDescription = description.innerHTML;
+                    
                     const currentPriority = todoArray[item][4];
+                    const currentLocation = todoArray[item][5];
                     newTodoTitle.value = currentTitle;
                     newTodoDescription.value = currentDescription;
                     newTodoPriority.value = currentPriority;
+                    newTodoLocation.value = currentLocation;
                     form.style.display = "block";
                     newTodoTitle.focus();
 
@@ -158,7 +161,14 @@ const todos = () => {
                         todoArray[item][2] = newTodoDescription.value;
                         todoArray[item][3] = newTodoDate.value;
                         todoArray[item][4] = newTodoPriority.value;
-                        todoArray[item][5] = newTodoLocation.value;
+                        todoArray[item][5] = document.getElementById("new-todo-project").value;
+                        //const value = e.options[e.selectedIndex].value;
+                        //const text = e.options[e.selectedIndex].text;
+                        //console.log(value)
+                        
+                        //console.log(todoArray[item][5])
+                        //console.log(newTodoLocation[selectedIndex].value)
+                        //console.log(newTodoLocation.target.options[newTodoLocation.target.selectedIndex].text)
                         resetForm();
                         saveTodoBtn.removeEventListener("click", editTodo);
                     }
@@ -231,7 +241,7 @@ const todos = () => {
         const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("-");
 
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, "Inbox"]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, newTodoLocation.value]);
         resetForm();
     }
 
