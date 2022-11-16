@@ -93,7 +93,7 @@ const todos = () => {
                     setTimeout(() => {
                         todoItemsContainer.innerHTML = "";
                         showTodos();
-                    }, "3000");
+                    }, "2000");
                 }
                 //done.innerHTML = todoArray[item][0];
                 todoDoneTitleDescripContainer.appendChild(done);
