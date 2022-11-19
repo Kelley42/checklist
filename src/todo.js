@@ -16,7 +16,7 @@ const todos = () => {
     }
 
     function showTodos() {
-        for (const item in todoArray) {  
+        for (const item in todoArray) { 
 
             // Figure out which project/date
 
@@ -233,7 +233,8 @@ const todos = () => {
         const [year, month, day] = newTodoDate.value.split("-");
         const newDateFormat = [month, day, year].join("/");
         
-        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, newTodoLocation.value, newTodoDate.value]);
+        todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, whichProject, newTodoDate.value]);
+        console.log(todoArray)
         resetForm();
     }
 
