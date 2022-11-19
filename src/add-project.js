@@ -18,7 +18,7 @@ const addProject = () => {
 
             const editBtn = document.createElement("button");
             editBtn.classList.add("edit-btn");
-            editBtn.addEventListener("click", () => {
+            editBtn.addEventListener("click", (e) => {
                 addProjectHeader.innerHTML = "Edit Project";
                 newProjectTitle.placeholder = "";
                 const currentTitle = projectTitle.innerText;
@@ -59,6 +59,9 @@ const addProject = () => {
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 });
+
+                // Stop changing to todo list view when hitting edit button
+                e.stopPropagation();
             });
 
             const editImage = document.createElement("img");
