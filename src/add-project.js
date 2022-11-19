@@ -36,6 +36,12 @@ const addProject = () => {
                     if (index !== -1) {
                         projectArray[index] = projectTitle.innerHTML;
                     }
+                    
+                    // Change title of todo list if currently showing edited todos
+                    const todoTitle = document.querySelector(".todo-title");
+                    if (currentTitle == todoTitle.innerHTML) {
+                        todoTitle.innerHTML = projectTitle.innerHTML;
+                    }
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }

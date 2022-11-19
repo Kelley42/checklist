@@ -332,6 +332,7 @@ const todos = () => {
                 whichDate = "";
                 whichProject = item.innerText;
                 todoTitle.innerHTML = item.innerText;
+                console.log("hi")
                 reset();
                 showTodos();
             });
