@@ -6,8 +6,9 @@ const navbarButton = document.querySelector("#nav-button-expand");
 navbarButton.addEventListener("click", () => {
     navbarContainer.classList.toggle("visible");
 });
-
+//todos();
 addProject();
 todos();
+
 
 

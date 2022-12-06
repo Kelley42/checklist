@@ -1,3 +1,5 @@
+//import { assignProjectTabs } from './todo';
+
 const addProject = () => {
     
     let projectArray = [];
@@ -42,6 +44,7 @@ const addProject = () => {
                     if (currentTitle == todoTitle.innerHTML) {
                         todoTitle.innerHTML = projectTitle.innerHTML;
                     }
+                    //console.log(projectTitle.classList)
                     resetForm();
                     saveProjectBtn.removeEventListener("click", editProject);
                 }
@@ -100,6 +103,7 @@ const addProject = () => {
     function saveProject() {
         projectArray.push(newProjectTitle.value);
         resetForm();
+        //assignProjectTabs;
     }
 
     function resetForm() {

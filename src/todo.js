@@ -326,6 +326,7 @@ const todos = () => {
     // Projects
     function assignProjectTabs() {
         const projectTitles = document.querySelectorAll(".project-title");
+        console.log(projectTitles)
         projectTitles.forEach(item => {
             item.classList.add(item.innerText);
             item.addEventListener("click", () => {
@@ -347,3 +348,4 @@ const todos = () => {
 };
 
 export { todos };
+//export function assignProjectTabs();
