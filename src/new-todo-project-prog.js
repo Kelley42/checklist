@@ -248,25 +248,8 @@ function displayTodo(itemStatus, itemTitle, itemDescription, itemDate, itemPrior
     const done = document.createElement("button");
     done.type = "button";
     done.classList.add("done");
-    done.addEventListener("click", checkDone);
+    done.addEventListener("click", checkDone(e, itemStatus));
 
-    function checkDone() {
-        // Add/remove checkmark
-        if (itemStatus == "not done") {
-            itemStatus = "done"
-            done.innerHTML = "✓";
-        } else {
-            itemStatus = "not done"
-            done.innerHTML = "";
-        }
-
-        // Remove item
-        todoItem.classList.toggle("hidden-item");
-        setTimeout(() => {
-            todoItemsContainer.innerHTML = "";
-            showTodos();
-        }, "2000");
-    }
     //done.innerHTML = todoArray[item][0];
     todoDoneTitleDescripContainer.appendChild(done);
 
@@ -372,6 +355,24 @@ function displayTodo(itemStatus, itemTitle, itemDescription, itemDate, itemPrior
     todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
     //todoItemContainer.appendChild(todoItem);
     todoItemsContainer.appendChild(todoItem);
+}
+
+function checkDone(e, itemStatus) {
+    // Add/remove checkmark
+    if (itemStatus == "not done") {
+        itemStatus = "done"
+        e.innerHTML = "✓";
+    } else {
+        itemStatus = "not done"
+        e.innerHTML = "";
+    }
+
+    // Remove item
+    document.querySelector(".item").classList.toggle("hidden-item");
+    setTimeout(() => {
+        todoItemsContainer.innerHTML = "";
+        showTodos();
+    }, "2000");
 }
 
 function showAddTodoForm() {
