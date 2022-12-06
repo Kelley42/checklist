@@ -279,16 +279,7 @@ function displayTodo(itemStatus, itemTitle, itemDescription, itemDate, itemPrior
     todoDateEditContainer.appendChild(date);
 
     // Set done checkbox color according to priority
-    if (itemPriority == "Low") {
-        done.style.border = "solid var(--pewter-blue) 4px";
-        done.style.backgroundColor = "var(--light-pewter-blue)";
-    } else if (itemPriority == "Medium") {
-        done.style.border = "solid var(--jasmine) 4px";
-        done.style.backgroundColor = "var(--light-jasmine)";
-    } else if (itemPriority == "High") {
-        done.style.border = "solid var(--tomato) 4px";
-        done.style.backgroundColor = "var(--light-tomato)";
-    }
+    setPriorityColor(itemPriority);
 
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
@@ -355,6 +346,20 @@ function displayTodo(itemStatus, itemTitle, itemDescription, itemDate, itemPrior
     todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
     //todoItemContainer.appendChild(todoItem);
     todoItemsContainer.appendChild(todoItem);
+}
+
+function setPriorityColor(itemPriority) {
+    const doneBtn = document.querySelector(".done");
+    if (itemPriority == "Low") {
+        doneBtn.style.border = "solid var(--pewter-blue) 4px";
+        doneBtn.style.backgroundColor = "var(--light-pewter-blue)";
+    } else if (itemPriority == "Medium") {
+        doneBtn.style.border = "solid var(--jasmine) 4px";
+        doneBtn.style.backgroundColor = "var(--light-jasmine)";
+    } else if (itemPriority == "High") {
+        doneBtn.style.border = "solid var(--tomato) 4px";
+        doneBtn.style.backgroundColor = "var(--light-tomato)";
+    }
 }
 
 function checkDone(e, itemStatus) {
