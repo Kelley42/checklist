@@ -1,4 +1,4 @@
-const Task = (status, title, description, date, priority, location, originalDate, whichDate, whichProject) => {
+const Task = (status, title, description, date, priority, location, originalDate) => {
     return {
         status, 
         title,
@@ -7,8 +7,6 @@ const Task = (status, title, description, date, priority, location, originalDate
         priority,
         location,
         originalDate,
-        whichDate,
-        whichProject,
     }
 }
 
