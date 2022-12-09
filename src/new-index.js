@@ -1,4 +1,4 @@
-import { hideAddProjectForm, addProjectToArray, showProjects, addTodoToArray, hideAddTodoForm, assignProjectTabs, showTodos, initiateWhichTab } from './new-todo-project-prog.js';
+import { hideAddProjectForm, addProjectToArray, showProjects, addTodoToArray, hideAddTodoForm, assignProjectTabs, showTodos } from './new-todo-proj-prog2.js';
 
 
 // Show/hide navbar

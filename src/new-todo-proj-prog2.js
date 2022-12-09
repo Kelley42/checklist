@@ -176,176 +176,226 @@ function addTodoToArray() {
 function showTodos() {
     //for (const item in todoArray) { 
     todoArray.forEach((item) => {
-        
-        // Determine which project selected
-        if (currentClick.whichProject == "Inbox") {
-            // Only show "not done" and inbox todos
-            if (item.status == "not done" && item.location == "Inbox") {
-                displayTodo(item);
-            }  
-        } else {
-            // Only show "not done" and not-inbox todos
-            if (item.status == "not done" && item.location == currentClick.whichProject) {
-                displayTodo(item);
-            }  
-        }
+        // console.log(todoArray[item])
+        // console.log(item)
 
-        // Determine which date tab selected
-        if (currentClick.whichDate == "Today") {
-            // Only show "not done" and today todos
-            const today = getTodayDate();
-            if (item.status == "not done" && item.date == today) {
-                displayTodo(item);
-            }  
-        } else if (currentClick.whichDate == "Week") {
-            // Only show "not done" and this week's todos
-            const thisweek = getWeekDates();
-            if (item.status == "not done" && thisweek.includes(item[3])) {
-                displayTodo(item);
-            }  
-        }
+        // for (const thing in item) {
+        //     console.log(item[thing])
+        // }
+
+        // todoArray[item].forEach((thing) => {
+        //     console.log(thing)
+        // })
+            
+            // ForEach - Determine which project selected 
+            if (currentClick.whichProject == "Inbox") {
+                // Only show "not done" and inbox todos
+                if (item.status == "not done" && item.location == "Inbox") {
+                    displayTodo(item);
+                }  
+            } else {
+                // Only show "not done" and not-inbox todos
+                if (item.status == "not done" && item.location == currentClick.whichProject) {
+                    displayTodo(item);
+                }  
+            }
+
+            // Determine which date tab selected
+            if (currentClick.whichDate == "Today") {
+                // Only show "not done" and today todos
+                const today = getTodayDate();
+                if (item.status == "not done" && item.date == today) {
+                    displayTodo(item);
+                }  
+            } else if (currentClick.whichDate == "Week") {
+                // Only show "not done" and this week's todos
+                const thisweek = getWeekDates();
+                if (item.status == "not done" && thisweek.includes(item[3])) {
+                    displayTodo(item);
+                }  
+            }
+            // // Determine which project selected
+            // if (currentClick.whichProject == "Inbox") {
+            //     // Only show "not done" and inbox todos
+            //     if (todoArray[item].status == "not done" && todoArray[item].location == "Inbox") {
+            //         displayTodo(todoArray[item]);
+            //     }  
+            // } else {
+            //     // Only show "not done" and not-inbox todos
+            //     if (todoArray[item].status == "not done" && todoArray[item].location == currentClick.whichProject) {
+            //         displayTodo(todoArray[item]);
+            //     }  
+            // }
+
+            // // Determine which date tab selected
+            // if (currentClick.whichDate == "Today") {
+            //     // Only show "not done" and today todos
+            //     const today = getTodayDate();
+            //     if (todoArray[item].status == "not done" && todoArray[item].date == today) {
+            //         displayTodo(todoArray[item]);
+            //     }  
+            // } else if (currentClick.whichDate == "Week") {
+            //     // Only show "not done" and this week's todos
+            //     const thisweek = getWeekDates();
+            //     if (todoArray[item].status == "not done" && thisweek.includes(item[3])) {
+            //         displayTodo(todoArray[item]);
+            //     }  
+            // }
+        //}
         //displayTodo(item); 
     })
     //return todoItemContainer;
 };
 
 function displayTodo(item) {
-    const todoItem = document.createElement("div");
-    todoItem.classList.add("item");
+    //console.log(item)
+    // for (const thing in item) {
+    //     console.log(thing)
+    // }
 
-    // Style Done and Title-Description container horizontally
-    const todoDoneTitleDescripContainer = document.createElement("div");
-    todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
+    // item.forEach((thing) => {
+    //     console.log(thing)
+    // })
 
-    // const done = document.createElement("input");
-    // done.type = "checkbox";
-    const done = document.createElement("button");
-    done.type = "button";
-    done.classList.add("done");
-    done.addEventListener("click", () => {
-        // Add/remove checkmark
-        if (item.status == "not done") {
-            item.status = "done"
-            done.innerHTML = "✓";
-        } else {
-            item.status = "not done"
-            done.innerHTML = "";
-        }
+        const todoItem = document.createElement("div");
+        todoItem.classList.add("item");
 
-        // Remove item
-        todoItem.classList.toggle("hidden-item");
-        setTimeout(() => {
-            todoItemsContainer.innerHTML = "";
-            showTodos();
-        }, "2000");
-    });
+        // Style Done and Title-Description container horizontally
+        const todoDoneTitleDescripContainer = document.createElement("div");
+        todoDoneTitleDescripContainer.classList.add("todo-done-title-descrip-container");
 
-    //done.innerHTML = todoArray[item][0];
-    todoDoneTitleDescripContainer.appendChild(done);
-
-    // Style Title and Description vertically
-    const todoTitleDescriptionContainer = document.createElement("div");
-    todoTitleDescriptionContainer.classList.add("todo-title-description-container");
-
-    const title = document.createElement("h2");
-    title.classList.add("title");
-    title.innerHTML = item.title;
-    todoTitleDescriptionContainer.appendChild(title);
-
-    const description = document.createElement("p");
-    description.classList.add("description");
-    description.innerHTML = item.description;
-    todoTitleDescriptionContainer.appendChild(description);
-
-    todoDoneTitleDescripContainer.appendChild(todoTitleDescriptionContainer);
-
-    // Style Date and Edit vertically
-    const todoDateEditContainer = document.createElement("div");
-    todoDateEditContainer.classList.add("todo-date-edit-container");
-
-    const date = document.createElement("p");
-    date.classList.add("date");
-    date.innerHTML = item.date;
-    todoDateEditContainer.appendChild(date);
-
-    // Set done checkbox color according to priority
-    if (item.priority == "Low") {
-        done.style.border = "solid var(--pewter-blue) 4px";
-        done.style.backgroundColor = "var(--light-pewter-blue)";
-    } else if (item.priority == "Medium") {
-        done.style.border = "solid var(--jasmine) 4px";
-        done.style.backgroundColor = "var(--light-jasmine)";
-    } else if (item.priority == "High") {
-        done.style.border = "solid var(--tomato) 4px";
-        done.style.backgroundColor = "var(--light-tomato)";
-    }
-
-    const editBtn = document.createElement("button");
-    editBtn.classList.add("edit-btn");
-    editBtn.addEventListener("click", () => {
-        addTodoHeader.innerHTML = "Edit Todo";
-        newTodoTitle.placeholder = "";
-        newTodoTitle.value = title.innerText;
-        newTodoDescription.value = description.innerHTML;
-        newTodoDate.value = item.originalDate;
-        newTodoPriority.value = item.priority;
-        newTodoLocation.value = item.location;
-        todoForm.style.display = "block";
-        newTodoTitle.focus();
-
-        // Change Save button functionality to edit
-        saveTodoBtn.removeEventListener("click", saveTodo);
-        saveTodoBtn.addEventListener("click", editTodo); 
-    
-        function editTodo() {
-            item.title = newTodoTitle.value;
-            item.description = newTodoDescription.value;
-            let newDateFormat = changeDateFormat();
-            item.date = newDateFormat;
-            item.priority = newTodoPriority.value;
-            item.location = document.getElementById("new-todo-project").value;
-            item.originalDate = newTodoDate.value;
-            resetTodoForm();
-            createNewTodo();
-            saveTodoBtn.removeEventListener("click", editTodo);
-        }
-
-        // Show Delete button
-        todoForm.style.padding = "30px 40px 90px 40px";
-        deleteTodoBtnGroup.style.display = "flex";
-
-        // Show Project input
-        newTodoLocation.style.display = "flex";
-
-        const newOption = document.createElement("option");
-        newOption.value = "New Project";
-        newOption.innerHTML = "New Project";
-
-        // Create variable so will only delete one item at a time
-        let notFound = true;
-        // Give functionality to delete todo
-        document.querySelector("#delete-todo-btn").addEventListener("click", () => {
-            // const index = todoArray.indexOf(item);
-            // console.log(index)
-            // const index = todoArray.findIndex(e => e.id === item[id]);
-            if (item !== -1 && notFound == true) {
-                todoArray.splice(item, 1);
-                notFound = false;
+        // const done = document.createElement("input");
+        // done.type = "checkbox";
+        const done = document.createElement("button");
+        done.type = "button";
+        done.classList.add("done");
+        done.addEventListener("click", () => {
+            // Add/remove checkmark
+            if (item.status == "not done") {
+                item.status = "done"
+                done.innerHTML = "✓";
+            } else {
+                item.status = "not done"
+                done.innerHTML = "";
             }
-            resetTodoForm();
-            saveTodoBtn.removeEventListener("click", editTodo);
+
+            // Remove item
+            todoItem.classList.toggle("hidden-item");
+            setTimeout(() => {
+                todoItemsContainer.innerHTML = "";
+                showTodos();
+            }, "2000");
         });
-    });
 
-    const editImage = document.createElement("img");
-    editImage.src = "./images/pencil-outline.png";
+        //done.innerHTML = todoArray[item][0];
+        todoDoneTitleDescripContainer.appendChild(done);
 
-    editBtn.appendChild(editImage);
-    todoDateEditContainer.appendChild(editBtn);
+        // Style Title and Description vertically
+        const todoTitleDescriptionContainer = document.createElement("div");
+        todoTitleDescriptionContainer.classList.add("todo-title-description-container");
 
-    todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
-    //todoItemContainer.appendChild(todoItem);
-    todoItemsContainer.appendChild(todoItem);
+        const title = document.createElement("h2");
+        title.classList.add("title");
+        title.innerHTML = item.title;
+        todoTitleDescriptionContainer.appendChild(title);
+
+        const description = document.createElement("p");
+        description.classList.add("description");
+        description.innerHTML = item.description;
+        todoTitleDescriptionContainer.appendChild(description);
+
+        todoDoneTitleDescripContainer.appendChild(todoTitleDescriptionContainer);
+
+        // Style Date and Edit vertically
+        const todoDateEditContainer = document.createElement("div");
+        todoDateEditContainer.classList.add("todo-date-edit-container");
+
+        const date = document.createElement("p");
+        date.classList.add("date");
+        date.innerHTML = item.date;
+        todoDateEditContainer.appendChild(date);
+
+        // Set done checkbox color according to priority
+        if (item.priority == "Low") {
+            done.style.border = "solid var(--pewter-blue) 4px";
+            done.style.backgroundColor = "var(--light-pewter-blue)";
+        } else if (item.priority == "Medium") {
+            done.style.border = "solid var(--jasmine) 4px";
+            done.style.backgroundColor = "var(--light-jasmine)";
+        } else if (item.priority == "High") {
+            done.style.border = "solid var(--tomato) 4px";
+            done.style.backgroundColor = "var(--light-tomato)";
+        }
+
+        const editBtn = document.createElement("button");
+        editBtn.classList.add("edit-btn");
+        editBtn.addEventListener("click", () => {
+            addTodoHeader.innerHTML = "Edit Todo";
+            newTodoTitle.placeholder = "";
+            newTodoTitle.value = title.innerText;
+            newTodoDescription.value = description.innerHTML;
+            newTodoDate.value = item.originalDate;
+            newTodoPriority.value = item.priority;
+            newTodoLocation.value = item.location;
+            todoForm.style.display = "block";
+            newTodoTitle.focus();
+
+            // Change Save button functionality to edit
+            saveTodoBtn.removeEventListener("click", saveTodo);
+            saveTodoBtn.addEventListener("click", editTodo); 
+        
+            function editTodo() {
+                item.title = newTodoTitle.value;
+                item.description = newTodoDescription.value;
+                let newDateFormat = changeDateFormat();
+                item.date = newDateFormat;
+                item.priority = newTodoPriority.value;
+                item.location = document.getElementById("new-todo-project").value;
+                item.originalDate = newTodoDate.value;
+                resetTodoForm();
+                createNewTodo();
+                saveTodoBtn.removeEventListener("click", editTodo);
+            }
+
+            // Show Delete button
+            todoForm.style.padding = "30px 40px 90px 40px";
+            deleteTodoBtnGroup.style.display = "flex";
+
+            // Show Project input
+            newTodoLocation.style.display = "flex";
+
+            const newOption = document.createElement("option");
+            newOption.value = "New Project";
+            newOption.innerHTML = "New Project";
+
+            // Create variable so will only delete one item at a time
+            let notFound = true;
+            // Give functionality to delete todo
+            document.querySelector("#delete-todo-btn").addEventListener("click", () => {
+                // const index = todoArray.indexOf(item);
+                // console.log(index)
+                // const index = todoArray.findIndex(e => e.id === item[id]);
+                if (item !== -1 && notFound == true) {
+                    todoArray.splice(item, 1);
+                    notFound = false;
+                }
+                resetTodoForm();
+                saveTodoBtn.removeEventListener("click", editTodo);
+            });
+        });
+
+        const editImage = document.createElement("img");
+        editImage.src = "./images/pencil-outline.png";
+
+        editBtn.appendChild(editImage);
+        todoDateEditContainer.appendChild(editBtn);
+
+        todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
+        //todoItemContainer.appendChild(todoItem);
+        todoItemsContainer.appendChild(todoItem);
+
+        console.log(todoArray)
+    
 }
 
 function showAddTodoForm() {
@@ -382,7 +432,7 @@ function createNewTodo() {
     let description = newTodoDescription.value;
     let date = changeDateFormat();
     let priority = newTodoPriority.value;
-    let location = newTodoLocation.value;
+    let location = currentClick.whichProject;
     let originalDate = newTodoDate.value;
 
     const newTodo = Task(status, title, description, date, priority, location, originalDate);
@@ -438,6 +488,7 @@ function resetTodoForm() {
     hideAddTodoForm();
 }
 
+
 const content = document.querySelector("#content");
 content.classList.add("todo-content");
 
@@ -475,7 +526,6 @@ cancelTodoBtn.addEventListener("click", hideAddTodoForm);
 const saveTodoBtn = document.querySelector("#save-todo-btn");
 
 const deleteTodoBtnGroup = document.querySelector("#delete-todo-btn-group");
-
 
 
 // Tabs
@@ -538,17 +588,4 @@ function assignProjectTabs() {
     });
 }
 
-
-export { hideAddProjectForm, addProjectToArray, showProjects, addTodoToArray, hideAddTodoForm, assignProjectTabs, showTodos };
-
-// // Initial set-up
-// hideAddProjectForm();
-// addProjectToArray();
-// showProjects();
-
-
-
-// addTodoToArray();
-// hideAddTodoForm();
-// assignProjectTabs();
-// showTodos();
+export { hideAddProjectForm, addProjectToArray, showProjects, addTodoToArray,  hideAddTodoForm, assignProjectTabs, showTodos };

@@ -234,7 +234,6 @@ const todos = () => {
         const newDateFormat = [month, day, year].join("/");
         
         todoArray.push(["not done", newTodoTitle.value, newTodoDescription.value, newDateFormat, newTodoPriority.value, whichProject, newTodoDate.value]);
-        console.log(todoArray)
         resetForm();
     }
 
