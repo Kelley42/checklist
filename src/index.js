@@ -1,14 +1,19 @@
-import { todos } from './todo';
-import { addProject } from './add-project';
+import { hideAddProjectForm, addProjectToArray, showProjects } from './project.js';
+import { addTodoToArray, hideAddTodoForm, assignProjectTabs, showTodos } from './todo.js';
 
+// Show/hide navbar
 const navbarContainer = document.querySelector("#navbar-container");
 const navbarButton = document.querySelector("#nav-button-expand");
 navbarButton.addEventListener("click", () => {
     navbarContainer.classList.toggle("visible");
 });
-//todos();
-addProject();
-todos();
 
+// Initial set-up
+hideAddProjectForm();
+addProjectToArray();
+showProjects();
 
-
+addTodoToArray();
+hideAddTodoForm();
+assignProjectTabs();
+showTodos();
