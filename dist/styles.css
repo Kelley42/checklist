@@ -375,7 +375,7 @@ nav li:hover,
     flex-direction: column;
     padding: 20px 30px;
     background-color: var(--white-chocolate);
-    border: solid var(--tomato);
+    /* border: solid var(--tomato); */
     margin-left: auto;
     margin-right: auto;
     /* overflow-y: auto; */

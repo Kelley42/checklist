@@ -8,6 +8,14 @@ navbarButton.addEventListener("click", () => {
     navbarContainer.classList.toggle("visible");
 });
 
+// If click outside navbar, closes navbar
+window.addEventListener("click", (e) => {
+    if (!navbarContainer.contains(e.target) && !navbarButton.contains(e.target) && navbarContainer.classList.value == "visible") {
+        console.log("boo")
+        navbarContainer.classList.toggle("visible");
+    }
+})
+
 // Initial set-up
 hideAddProjectForm();
 addProjectToArray();
