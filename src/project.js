@@ -18,35 +18,7 @@ function showProjects() {
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-btn");
-        editBtn.addEventListener("click", (e) => {
-            addProjectHeader.innerHTML = "Edit Project";
-            newProjectTitle.placeholder = "";
-            const currentTitle = projectTitle.innerText;
-            newProjectTitle.value = currentTitle;
-            projectForm.style.display = "block";
-            newProjectTitle.focus();
-
-            // Change Save button functionality to edit
-            saveProjectBtn.removeEventListener("click", saveProject);
-            saveProjectBtn.addEventListener("click", editProject);
-
-            // Show Delete button
-            projectForm.style.padding = "30px 40px 70px 40px";
-            deleteProjectBtnGroup.style.display = "flex";
-
-            // Give functionality to delete project
-            document.querySelector("#delete-project-btn").addEventListener("click", () => {
-                const index = projectArray.indexOf(currentTitle);
-                if (index !== -1) {
-                    projectArray.splice(index, 1);
-                }
-                resetProjectForm();
-                saveProjectBtn.removeEventListener("click", editProject);
-            });
-
-            // Stop changing to todo list view when hitting edit button
-            e.stopPropagation();
-        });
+        editBtn.addEventListener("click", showEditProjectForm);
 
         const editImage = document.createElement("img");
         editImage.src = "./images/pencil-outline.png";
@@ -58,6 +30,36 @@ function showProjects() {
     })
 
     showProjectDropdown();
+}
+
+function showEditProjectForm(e) {
+    addProjectHeader.innerHTML = "Edit Project";
+    newProjectTitle.placeholder = "";
+    const currentTitle = projectTitle.innerText;
+    newProjectTitle.value = currentTitle;
+    projectForm.style.display = "block";
+    newProjectTitle.focus();
+
+    // Change Save button functionality to edit
+    saveProjectBtn.removeEventListener("click", saveProject);
+    saveProjectBtn.addEventListener("click", editProject);
+
+    // Show Delete button
+    projectForm.style.padding = "30px 40px 70px 40px";
+    deleteProjectBtnGroup.style.display = "flex";
+
+    // Give functionality to delete project
+    document.querySelector("#delete-project-btn").addEventListener("click", () => {
+        const index = projectArray.indexOf(currentTitle);
+        if (index !== -1) {
+            projectArray.splice(index, 1);
+        }
+        resetProjectForm();
+        saveProjectBtn.removeEventListener("click", editProject);
+    });
+
+    // Stop changing to todo list view when hitting edit button
+    e.stopPropagation();
 }
 
 // Update location dropdown in edit todo form
