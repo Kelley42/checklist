@@ -29,8 +29,6 @@ function showProjects() {
             // Change Save button functionality to edit
             saveProjectBtn.removeEventListener("click", saveProject);
             saveProjectBtn.addEventListener("click", editProject);
-                    
-            editProject(projectTitle, currentTitle);
 
             // Show Delete button
             projectForm.style.padding = "30px 40px 70px 40px";
@@ -85,11 +83,13 @@ function showProjects() {
 
 function saveProject() {
     projectArray.push(newProjectTitle.value);
-    resetProjectForm();
-    assignProjectTabs();
+    //localStorage,setItem("projectArray", JSON.stringify(projectArray));
+    refreshProjects();
 }
 
-function editProject(projectTitle, currentTitle) {
+function editProject() {
+    const projectTitle = document.querySelector(".project-title");
+    const currentTitle = projectTitle.innerText;
     projectTitle.innerHTML = newProjectTitle.value;
     const index = projectArray.indexOf(currentTitle);
     if (index !== -1) {
@@ -101,9 +101,15 @@ function editProject(projectTitle, currentTitle) {
     if (currentTitle == todoTitle.innerHTML) {
         todoTitle.innerHTML = projectTitle.innerHTML;
     }
-    //console.log(projectTitle.classList)
-    resetProjectForm();
+
+    //localStorage,setItem("projectArray", JSON.stringify(projectArray));
+    refreshProjects();
     saveProjectBtn.removeEventListener("click", editProject);
+}
+
+function refreshProjects() {
+    resetProjectForm();
+    assignProjectTabs();
 }
 
 function resetProjectForm() {
