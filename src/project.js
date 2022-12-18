@@ -57,28 +57,29 @@ function showProjects() {
         projectLinksContainer.appendChild(projectTitleContainer);
     })
 
-    // Update location dropdown in edit todo form
-    function showProjectDropdown() {
-
-        // Make sure dropdown refreshed and empty
-        const newTodoProjectDropdown = document.querySelector("#new-todo-project");
-        newTodoProjectDropdown.innerHTML = "";
-
-        // Create initial inbox option
-        const inboxProject = document.createElement("option");
-        inboxProject.value = "Inbox";
-        inboxProject.innerHTML = "Inbox";
-        newTodoProjectDropdown.appendChild(inboxProject);
-
-        // Add custom projects
-        projectArray.forEach((i) => {
-            const newProject = document.createElement("option");
-            newProject.value = i;
-            newProject.innerHTML = i;
-            newTodoProjectDropdown.appendChild(newProject);
-        })
-    }
     showProjectDropdown();
+}
+
+// Update location dropdown in edit todo form
+function showProjectDropdown() {
+
+    // Make sure dropdown refreshed and empty
+    const newTodoProjectDropdown = document.querySelector("#new-todo-project");
+    newTodoProjectDropdown.innerHTML = "";
+
+    // Create initial inbox option
+    const inboxProject = document.createElement("option");
+    inboxProject.value = "Inbox";
+    inboxProject.innerHTML = "Inbox";
+    newTodoProjectDropdown.appendChild(inboxProject);
+
+    // Add custom projects
+    projectArray.forEach((i) => {
+        const newProject = document.createElement("option");
+        newProject.value = i;
+        newProject.innerHTML = i;
+        newTodoProjectDropdown.appendChild(newProject);
+    })
 }
 
 function saveProject() {
