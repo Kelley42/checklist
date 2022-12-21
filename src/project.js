@@ -103,14 +103,8 @@ function editProject(i) {
     }
     
     // Change todo projects to reflect new project title
-    editTodoProject();
-    function editTodoProject() {
-        todoArray.forEach((item) => { 
-            if (item.location == currentTitle) {
-                item.location = newProjectTitle.value;
-            }
-        })
-    }
+    const newTitle = newProjectTitle.value;
+    editTodoProject(currentTitle, newTitle);
 
     // Change title of todo list if currently showing edited todos
     const todoTitle = document.querySelector(".todo-title");
@@ -123,9 +117,13 @@ function editProject(i) {
     saveProjectBtn.removeEventListener("click", () => editProject(i));
 }
 
-// function storeCurrentTitle(currentTitle) {
-//     return currentTitle;
-// }
+function editTodoProject(currentTitle, newTitle) {
+    todoArray.forEach((item) => { 
+        if (item.location == currentTitle) {
+            item.location = newTitle;
+        }
+    })
+}
 
 function refreshProjects() {
     resetProjectForm();
