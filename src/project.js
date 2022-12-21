@@ -1,4 +1,4 @@
-import { assignProjectTabs } from './todo.js';
+import { assignProjectTabs, todoArray } from './todo.js';
     
 let projectArray = [];
 
@@ -102,6 +102,16 @@ function editProject(i) {
         projectArray[index] = projectTitle.innerHTML;
     }
     
+    // Change todo projects to reflect new project title
+    editTodoProject();
+    function editTodoProject() {
+        todoArray.forEach((item) => { 
+            if (item.location == currentTitle) {
+                item.location = newProjectTitle.value;
+            }
+        })
+    }
+
     // Change title of todo list if currently showing edited todos
     const todoTitle = document.querySelector(".todo-title");
     if (currentTitle == todoTitle.innerHTML) {
@@ -112,6 +122,10 @@ function editProject(i) {
     refreshProjects();
     saveProjectBtn.removeEventListener("click", () => editProject(i));
 }
+
+// function storeCurrentTitle(currentTitle) {
+//     return currentTitle;
+// }
 
 function refreshProjects() {
     resetProjectForm();

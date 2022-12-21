@@ -367,4 +367,8 @@ function assignProjectTabs() {
     });
 }
 
-export { addTodoToArray,  hideAddTodoForm, assignProjectTabs, showTodos };
+// function editTodoProject() {
+
+// }
+
+export { addTodoToArray,  hideAddTodoForm, assignProjectTabs, showTodos, todoArray };
