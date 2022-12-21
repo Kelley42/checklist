@@ -18,7 +18,7 @@ function showProjects() {
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("edit-btn");
-        editBtn.addEventListener("click", showEditProjectForm);
+        editBtn.addEventListener("click", (e) => showEditProjectForm(e, i));
 
         const editImage = document.createElement("img");
         editImage.src = "./images/pencil-outline.png";
@@ -32,34 +32,37 @@ function showProjects() {
     showProjectDropdown();
 }
 
-function showEditProjectForm(e) {
+function showEditProjectForm(e, i) {
     addProjectHeader.innerHTML = "Edit Project";
     newProjectTitle.placeholder = "";
-    const currentTitle = projectTitle.innerText;
-    newProjectTitle.value = currentTitle;
+    // const currentTitle = projectTitle.innerText;
+    // newProjectTitle.value = currentTitle;
+    newProjectTitle.value = i;
     projectForm.style.display = "block";
     newProjectTitle.focus();
 
     // Change Save button functionality to edit
     saveProjectBtn.removeEventListener("click", saveProject);
-    saveProjectBtn.addEventListener("click", editProject);
+    saveProjectBtn.addEventListener("click", () => editProject(i));
 
     // Show Delete button
     projectForm.style.padding = "30px 40px 70px 40px";
     deleteProjectBtnGroup.style.display = "flex";
 
     // Give functionality to delete project
-    document.querySelector("#delete-project-btn").addEventListener("click", () => {
-        const index = projectArray.indexOf(currentTitle);
-        if (index !== -1) {
-            projectArray.splice(index, 1);
-        }
-        resetProjectForm();
-        saveProjectBtn.removeEventListener("click", editProject);
-    });
+    document.querySelector("#delete-project-btn").addEventListener("click", () => deleteProject(i));
 
     // Stop changing to todo list view when hitting edit button
     e.stopPropagation();
+}
+
+function deleteProject(i) {
+    const index = projectArray.indexOf(i)
+    if (index !== -1) {
+        projectArray.splice(index, 1);
+    }
+    resetProjectForm();
+    saveProjectBtn.removeEventListener("click", () => editProject(i));
 }
 
 // Update location dropdown in edit todo form
@@ -90,9 +93,9 @@ function saveProject() {
     refreshProjects();
 }
 
-function editProject() {
+function editProject(i) {
     const projectTitle = document.querySelector(".project-title");
-    const currentTitle = projectTitle.innerText;
+    const currentTitle = i;
     projectTitle.innerHTML = newProjectTitle.value;
     const index = projectArray.indexOf(currentTitle);
     if (index !== -1) {
@@ -107,7 +110,7 @@ function editProject() {
 
     //localStorage,setItem("projectArray", JSON.stringify(projectArray));
     refreshProjects();
-    saveProjectBtn.removeEventListener("click", editProject);
+    saveProjectBtn.removeEventListener("click", () => editProject(i));
 }
 
 function refreshProjects() {

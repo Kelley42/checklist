@@ -87,6 +87,7 @@ function saveProject() {
     refreshProjects();
 }
 
+// Not returning correct edited title******
 function editProject() {
     const projectTitle = document.querySelector(".project-title");
     const currentTitle = projectTitle.innerText;
