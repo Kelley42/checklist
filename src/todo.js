@@ -139,7 +139,7 @@ function displayTodo(item) {
             item.location = document.getElementById("new-todo-project").value;
             item.originalDate = newTodoDate.value;
             resetTodoForm();
-            createNewTodo();
+            //createNewTodo();
             saveTodoBtn.removeEventListener("click", editTodo);
         }
 
@@ -174,7 +174,8 @@ function displayTodo(item) {
     todoDateEditContainer.appendChild(editBtn);
 
     todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
-    todoItemsContainer.appendChild(todoItem);  
+    todoItemsContainer.appendChild(todoItem); 
+    console.log(todoArray) 
 };
    
 function showAddTodoForm() {
