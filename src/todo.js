@@ -105,50 +105,7 @@ function displayTodo(item) {
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
     editBtn.addEventListener("click", () => {
-        // Fill in edit todo form
-        addTodoHeader.innerHTML = "Edit Todo";
-        newTodoTitle.placeholder = "";
-        newTodoTitle.value = title.innerText;
-        newTodoDescription.value = description.innerHTML;
-        newTodoDate.value = item.originalDate;
-        newTodoPriority.value = item.priority;
-        newTodoLocation.value = item.location;
-        todoForm.style.display = "block";
-        newTodoTitle.focus();
-
-        // Change Save button functionality to edit
-        saveTodoBtn.removeEventListener("click", saveTodo);
-        saveTodoBtn.addEventListener("click", editTodo); 
-        //saveTodoBtn.addEventListener("click", () => editTodo(item)); 
-        
-        function editTodo() {
-            item.title = newTodoTitle.value;
-            item.description = newTodoDescription.value;
-            let newDateFormat = changeDateFormat();
-            item.date = newDateFormat;
-            item.priority = newTodoPriority.value;
-            item.location = document.getElementById("new-todo-project").value;
-            item.originalDate = newTodoDate.value;
-            resetTodoForm();
-            //createNewTodo();
-            saveTodoBtn.removeEventListener("click", editTodo);
-        }
-
-        // Show Delete button
-        todoForm.style.padding = "30px 40px 90px 40px";
-        deleteTodoBtnGroup.style.display = "flex";
-
-        // Show Project input
-        newTodoLocation.style.display = "flex";
-
-        const newOption = document.createElement("option");
-        newOption.value = "New Project";
-        newOption.innerHTML = "New Project";
-
-        // Create variable so will only delete one item at a time
-        let notFound = true;
-        // Give functionality to delete todo
-        document.querySelector("#delete-todo-btn").addEventListener("click", () => deleteTodo(item));
+        showEditTodoForm(item);
     });
 
     const editImage = document.createElement("img");
@@ -161,14 +118,61 @@ function displayTodo(item) {
     todoItemsContainer.appendChild(todoItem); 
 };
 
-function deleteTodo(item) {
-    if (item !== -1 && notFound == true) {
-        todoArray.splice(item, 1);
-        notFound = false;
+function showEditTodoForm(item) {
+    const title = document.querySelector(".title");
+    const description = document.querySelector(".description");
+    // Fill in edit todo form
+    addTodoHeader.innerHTML = "Edit Todo";
+    newTodoTitle.placeholder = "";
+    newTodoTitle.value = title.innerText;
+    newTodoDescription.value = description.innerHTML;
+    newTodoDate.value = item.originalDate;
+    newTodoPriority.value = item.priority;
+    newTodoLocation.value = item.location;
+    todoForm.style.display = "block";
+    newTodoTitle.focus();
+
+    // Change Save button functionality to edit
+    saveTodoBtn.removeEventListener("click", saveTodo);
+    saveTodoBtn.addEventListener("click", editTodo); 
+    //saveTodoBtn.addEventListener("click", () => editTodo(item)); 
+    
+    function editTodo() {
+        item.title = newTodoTitle.value;
+        item.description = newTodoDescription.value;
+        let newDateFormat = changeDateFormat();
+        item.date = newDateFormat;
+        item.priority = newTodoPriority.value;
+        item.location = document.getElementById("new-todo-project").value;
+        item.originalDate = newTodoDate.value;
+        resetTodoForm();
+        //createNewTodo();
+        saveTodoBtn.removeEventListener("click", editTodo);
     }
-    resetTodoForm();
-    saveTodoBtn.removeEventListener("click", editTodo);
-    //saveTodoBtn.removeEventListener("click", () => editTodo(item));
+
+    // Show Delete button
+    todoForm.style.padding = "30px 40px 90px 40px";
+    deleteTodoBtnGroup.style.display = "flex";
+
+    // Show Project input
+    newTodoLocation.style.display = "flex";
+
+    const newOption = document.createElement("option");
+    newOption.value = "New Project";
+    newOption.innerHTML = "New Project";
+
+    // Create variable so will only delete one item at a time
+    let notFound = true;
+    // Give functionality to delete todo
+    document.querySelector("#delete-todo-btn").addEventListener("click", () => {
+        if (item !== -1 && notFound == true) {
+            todoArray.splice(item, 1);
+            notFound = false;
+        }
+        resetTodoForm();
+        saveTodoBtn.removeEventListener("click", editTodo);
+        //saveTodoBtn.removeEventListener("click", () => editTodo(item));
+    });
 }
 
 // Set done checkbox color according to priority
