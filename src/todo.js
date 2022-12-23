@@ -56,21 +56,7 @@ function displayTodo(item) {
     done.type = "button";
     done.classList.add("done");
     done.addEventListener("click", () => {
-        // Add/remove checkmark
-        if (item.status == "not done") {
-            item.status = "done"
-            done.innerHTML = "✓";
-        } else {
-            item.status = "not done"
-            done.innerHTML = "";
-        }
-
-        // Remove item
-        todoItem.classList.toggle("hidden-item");
-        setTimeout(() => {
-            todoItemsContainer.innerHTML = "";
-            showTodos();
-        }, "2000");
+        removeTodo(item, done, todoItem);
     });
    
     todoDoneTitleDescripContainer.appendChild(done);
@@ -100,13 +86,11 @@ function displayTodo(item) {
     date.innerHTML = item.date;
     todoDateEditContainer.appendChild(date);
 
-    setDoneColor(done, item);
+    setDoneColor(item, done);
 
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
-    editBtn.addEventListener("click", () => {
-        showEditTodoForm(item);
-    });
+    editBtn.addEventListener("click", () => showEditTodoForm(item));
 
     const editImage = document.createElement("img");
     editImage.src = "./images/pencil-outline.png";
@@ -118,9 +102,28 @@ function displayTodo(item) {
     todoItemsContainer.appendChild(todoItem); 
 };
 
+function removeTodo(item, done, todoItem) {
+    // Add/remove checkmark
+    if (item.status == "not done") {
+        item.status = "done"
+        done.innerHTML = "✓";
+    } else {
+        item.status = "not done"
+        done.innerHTML = "";
+    }
+
+    // Remove item
+    todoItem.classList.toggle("hidden-item");
+    setTimeout(() => {
+        todoItemsContainer.innerHTML = "";
+        showTodos();
+    }, "2000");
+}
+
 function showEditTodoForm(item) {
     const title = document.querySelector(".title");
     const description = document.querySelector(".description");
+
     // Fill in edit todo form
     addTodoHeader.innerHTML = "Edit Todo";
     newTodoTitle.placeholder = "";
@@ -176,7 +179,7 @@ function showEditTodoForm(item) {
 }
 
 // Set done checkbox color according to priority
-function setDoneColor(done, item) {
+function setDoneColor(item, done) {
     if (item.priority == "Low") {
         done.style.border = "solid var(--pewter-blue) 4px";
         done.style.backgroundColor = "var(--light-pewter-blue)";
