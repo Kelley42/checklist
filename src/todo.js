@@ -100,17 +100,6 @@ function displayTodo(item) {
     date.innerHTML = item.date;
     todoDateEditContainer.appendChild(date);
 
-    // // Set done checkbox color according to priority
-    // if (item.priority == "Low") {
-    //     done.style.border = "solid var(--pewter-blue) 4px";
-    //     done.style.backgroundColor = "var(--light-pewter-blue)";
-    // } else if (item.priority == "Medium") {
-    //     done.style.border = "solid var(--jasmine) 4px";
-    //     done.style.backgroundColor = "var(--light-jasmine)";
-    // } else if (item.priority == "High") {
-    //     done.style.border = "solid var(--tomato) 4px";
-    //     done.style.backgroundColor = "var(--light-tomato)";
-    // }
     setDoneColor(done, item);
 
     const editBtn = document.createElement("button");
@@ -159,15 +148,7 @@ function displayTodo(item) {
         // Create variable so will only delete one item at a time
         let notFound = true;
         // Give functionality to delete todo
-        document.querySelector("#delete-todo-btn").addEventListener("click", () => {
-            if (item !== -1 && notFound == true) {
-                todoArray.splice(item, 1);
-                notFound = false;
-            }
-            resetTodoForm();
-            saveTodoBtn.removeEventListener("click", editTodo);
-            //saveTodoBtn.removeEventListener("click", () => editTodo(item));
-        });
+        document.querySelector("#delete-todo-btn").addEventListener("click", () => deleteTodo(item));
     });
 
     const editImage = document.createElement("img");
@@ -180,8 +161,18 @@ function displayTodo(item) {
     todoItemsContainer.appendChild(todoItem); 
 };
 
+function deleteTodo(item) {
+    if (item !== -1 && notFound == true) {
+        todoArray.splice(item, 1);
+        notFound = false;
+    }
+    resetTodoForm();
+    saveTodoBtn.removeEventListener("click", editTodo);
+    //saveTodoBtn.removeEventListener("click", () => editTodo(item));
+}
+
+// Set done checkbox color according to priority
 function setDoneColor(done, item) {
-    // Set done checkbox color according to priority
     if (item.priority == "Low") {
         done.style.border = "solid var(--pewter-blue) 4px";
         done.style.backgroundColor = "var(--light-pewter-blue)";
