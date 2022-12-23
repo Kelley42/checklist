@@ -100,17 +100,18 @@ function displayTodo(item) {
     date.innerHTML = item.date;
     todoDateEditContainer.appendChild(date);
 
-    // Set done checkbox color according to priority
-    if (item.priority == "Low") {
-        done.style.border = "solid var(--pewter-blue) 4px";
-        done.style.backgroundColor = "var(--light-pewter-blue)";
-    } else if (item.priority == "Medium") {
-        done.style.border = "solid var(--jasmine) 4px";
-        done.style.backgroundColor = "var(--light-jasmine)";
-    } else if (item.priority == "High") {
-        done.style.border = "solid var(--tomato) 4px";
-        done.style.backgroundColor = "var(--light-tomato)";
-    }
+    // // Set done checkbox color according to priority
+    // if (item.priority == "Low") {
+    //     done.style.border = "solid var(--pewter-blue) 4px";
+    //     done.style.backgroundColor = "var(--light-pewter-blue)";
+    // } else if (item.priority == "Medium") {
+    //     done.style.border = "solid var(--jasmine) 4px";
+    //     done.style.backgroundColor = "var(--light-jasmine)";
+    // } else if (item.priority == "High") {
+    //     done.style.border = "solid var(--tomato) 4px";
+    //     done.style.backgroundColor = "var(--light-tomato)";
+    // }
+    setDoneColor(done, item);
 
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
@@ -129,6 +130,7 @@ function displayTodo(item) {
         // Change Save button functionality to edit
         saveTodoBtn.removeEventListener("click", saveTodo);
         saveTodoBtn.addEventListener("click", editTodo); 
+        //saveTodoBtn.addEventListener("click", () => editTodo(item)); 
         
         function editTodo() {
             item.title = newTodoTitle.value;
@@ -164,6 +166,7 @@ function displayTodo(item) {
             }
             resetTodoForm();
             saveTodoBtn.removeEventListener("click", editTodo);
+            //saveTodoBtn.removeEventListener("click", () => editTodo(item));
         });
     });
 
@@ -175,8 +178,37 @@ function displayTodo(item) {
 
     todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
     todoItemsContainer.appendChild(todoItem); 
-    console.log(todoArray) 
 };
+
+function setDoneColor(done, item) {
+    // Set done checkbox color according to priority
+    if (item.priority == "Low") {
+        done.style.border = "solid var(--pewter-blue) 4px";
+        done.style.backgroundColor = "var(--light-pewter-blue)";
+    } else if (item.priority == "Medium") {
+        done.style.border = "solid var(--jasmine) 4px";
+        done.style.backgroundColor = "var(--light-jasmine)";
+    } else if (item.priority == "High") {
+        done.style.border = "solid var(--tomato) 4px";
+        done.style.backgroundColor = "var(--light-tomato)";
+    }
+}
+
+// function editTodo(item) {
+//     //console.log(item)
+//     item.title = newTodoTitle.value;
+//     item.description = newTodoDescription.value;
+//     let newDateFormat = changeDateFormat();
+//     item.date = newDateFormat;
+//     item.priority = newTodoPriority.value;
+//     item.location = document.getElementById("new-todo-project").value;
+//     item.originalDate = newTodoDate.value;
+//     resetTodoForm();
+//     //createNewTodo();
+//     saveTodoBtn.removeEventListener("click", () => editTodo(item));
+//     //console.log(todoArray)
+// }
+
    
 function showAddTodoForm() {
     addTodoHeader.innerHTML = "Add Todo";

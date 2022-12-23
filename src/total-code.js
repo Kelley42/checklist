@@ -307,7 +307,8 @@ function displayTodo(item) {
             item.location = document.getElementById("new-todo-project").value;
             item.originalDate = newTodoDate.value;
             resetTodoForm();
-            createNewTodo();
+            // Removed createNewTodo so will not create new blank todo
+            //createNewTodo();
             saveTodoBtn.removeEventListener("click", editTodo);
         }
 
