@@ -327,6 +327,7 @@ function displayTodo(item) {
         let notFound = true;
         // Give functionality to delete todo
         document.querySelector("#delete-todo-btn").addEventListener("click", () => {
+            // Changed to use index
             if (item !== -1 && notFound == true) {
                 todoArray.splice(item, 1);
                 notFound = false;

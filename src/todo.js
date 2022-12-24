@@ -1,4 +1,5 @@
 import { Task } from './task.js';
+import { DisplayTodoObject } from './display-todo-object.js';
 
 let todoArray = [];
 
@@ -55,10 +56,7 @@ function displayTodo(item) {
     const done = document.createElement("button");
     done.type = "button";
     done.classList.add("done");
-    done.addEventListener("click", () => {
-        removeTodo(item, done, todoItem);
-    });
-   
+    
     todoDoneTitleDescripContainer.appendChild(done);
 
     // Style Title and Description vertically
@@ -86,11 +84,8 @@ function displayTodo(item) {
     date.innerHTML = item.date;
     todoDateEditContainer.appendChild(date);
 
-    setDoneColor(item, done);
-
     const editBtn = document.createElement("button");
     editBtn.classList.add("edit-btn");
-    editBtn.addEventListener("click", () => showEditTodoForm(item));
 
     const editImage = document.createElement("img");
     editImage.src = "./images/pencil-outline.png";
@@ -100,35 +95,43 @@ function displayTodo(item) {
 
     todoItem.append(todoDoneTitleDescripContainer, todoDateEditContainer);
     todoItemsContainer.appendChild(todoItem); 
+
+    // create display todo object
+    const newDisplayTodo = DisplayTodoObject(todoItem, done, title, description, date)
+    
+    // Add event listeners
+    done.addEventListener("click", () => removeTodo(item, newDisplayTodo));
+    setDoneColor(item, newDisplayTodo);
+    editBtn.addEventListener("click", () => showEditTodoForm(item, newDisplayTodo));
 };
 
-function removeTodo(item, done, todoItem) {
+function removeTodo(item, newDisplayTodo) {
     // Add/remove checkmark
     if (item.status == "not done") {
         item.status = "done"
-        done.innerHTML = "✓";
+        newDisplayTodo.done.innerHTML = "✓";
     } else {
         item.status = "not done"
-        done.innerHTML = "";
+        newDisplayTodo.done.innerHTML = "";
     }
 
     // Remove item
-    todoItem.classList.toggle("hidden-item");
+    newDisplayTodo.todoItem.classList.toggle("hidden-item");
     setTimeout(() => {
         todoItemsContainer.innerHTML = "";
         showTodos();
     }, "2000");
 }
 
-function showEditTodoForm(item) {
-    const title = document.querySelector(".title");
-    const description = document.querySelector(".description");
-
+function showEditTodoForm(item, newDisplayTodo) {
+    // const title = document.querySelector(".title");
+    // const description = document.querySelector(".description");
+    
     // Fill in edit todo form
     addTodoHeader.innerHTML = "Edit Todo";
     newTodoTitle.placeholder = "";
-    newTodoTitle.value = title.innerText;
-    newTodoDescription.value = description.innerHTML;
+    newTodoTitle.value = newDisplayTodo.title.innerText;
+    newTodoDescription.value = newDisplayTodo.description.innerHTML;
     newTodoDate.value = item.originalDate;
     newTodoPriority.value = item.priority;
     newTodoLocation.value = item.location;
@@ -140,6 +143,7 @@ function showEditTodoForm(item) {
     saveTodoBtn.addEventListener("click", editTodo); 
     //saveTodoBtn.addEventListener("click", () => editTodo(item)); 
     
+    // Use new info to save edited todo
     function editTodo() {
         item.title = newTodoTitle.value;
         item.description = newTodoDescription.value;
@@ -167,28 +171,33 @@ function showEditTodoForm(item) {
     // Create variable so will only delete one item at a time
     let notFound = true;
     // Give functionality to delete todo
-    document.querySelector("#delete-todo-btn").addEventListener("click", () => {
-        if (item !== -1 && notFound == true) {
-            todoArray.splice(item, 1);
+    const index = todoArray.indexOf(item);
+    document.querySelector("#delete-todo-btn").addEventListener("click", deleteTodo);
+
+    function deleteTodo() {
+        // index = todoArray.indexOf(item);
+        if (index != -1  && notFound == true) {
+            //console.log(item)
+            todoArray.splice(index, 1);
             notFound = false;
         }
         resetTodoForm();
         saveTodoBtn.removeEventListener("click", editTodo);
         //saveTodoBtn.removeEventListener("click", () => editTodo(item));
-    });
+    };
 }
 
 // Set done checkbox color according to priority
-function setDoneColor(item, done) {
+function setDoneColor(item, newDisplayTodo) {
     if (item.priority == "Low") {
-        done.style.border = "solid var(--pewter-blue) 4px";
-        done.style.backgroundColor = "var(--light-pewter-blue)";
+        newDisplayTodo.done.style.border = "solid var(--pewter-blue) 4px";
+        newDisplayTodo.done.style.backgroundColor = "var(--light-pewter-blue)";
     } else if (item.priority == "Medium") {
-        done.style.border = "solid var(--jasmine) 4px";
-        done.style.backgroundColor = "var(--light-jasmine)";
+        newDisplayTodo.done.style.border = "solid var(--jasmine) 4px";
+        newDisplayTodo.done.style.backgroundColor = "var(--light-jasmine)";
     } else if (item.priority == "High") {
-        done.style.border = "solid var(--tomato) 4px";
-        done.style.backgroundColor = "var(--light-tomato)";
+        newDisplayTodo.done.style.border = "solid var(--tomato) 4px";
+        newDisplayTodo.done.style.backgroundColor = "var(--light-tomato)";
     }
 }
 
@@ -297,7 +306,7 @@ function resetTodoForm() {
     hideAddTodoForm();
 }
 
-// Set up todo content
+// Set up todo content container
 const content = document.querySelector("#content");
 content.classList.add("todo-content");
 
