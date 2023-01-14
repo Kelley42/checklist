@@ -1,4 +1,4 @@
-import { assignProjectTabs, todoArray } from './todo.js';
+import { assignProjectTabs, todoArray } from './todo-new.js';
     
 let projectArray = [];
 
