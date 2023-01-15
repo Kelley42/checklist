@@ -12,9 +12,17 @@ function addTodoToArray() {
     const taskFour = Task("not done", "play", "playing", "11/16/2022", "Low", "Personal", "2022-11-16");
     const taskFive = Task("not done", "work", "working", "11/23/2022", "High", "Work", "2022-11-23");
     todoArray.push(taskOne, taskTwo, taskThree, taskFour, taskFive);
+    storeArray();
+}
+
+function storeArray () {
+    localStorage.setItem('storedTodoArray', JSON.stringify(todoArray));
 }
 
 function showTodos() {
+    todoArray = JSON.parse(localStorage.getItem('storedTodoArray'));
+    console.log('retrievedArrray: ', todoArray)
+
     todoArray.forEach((item) => { 
         // Determine which project selected 
         if (currentClick.whichProject == "Inbox") {
@@ -157,6 +165,8 @@ function displayTodo(item) {
             //console.log(currentItem)
             //editable = false;
 
+            storeArray();
+
             resetTodoForm();
             //createNewTodo();
             //item = currentItem;
@@ -193,6 +203,9 @@ function displayTodo(item) {
                 //notFound = false;
             }
             //console.table(todoArray)
+
+            storeArray();
+
             resetTodoForm();
             //saveTodoBtn.removeEventListener("click", editTodo);
     
@@ -217,6 +230,8 @@ function removeTodo(item, newDisplayTodo) {
         todoItemsContainer.innerHTML = "";
         showTodos();
     }, "2000");
+
+    storeArray();
 }
 
 // Set done checkbox color according to priority
@@ -255,6 +270,8 @@ function hideAddTodoForm() {
 }
 
 function saveTodo() {
+    storeArray();
+
     createNewTodo();
     resetTodoForm();
 }
@@ -271,6 +288,7 @@ function createNewTodo() {
     const newTodo = Task(status, title, description, date, priority, location, originalDate);
     todoArray.push(newTodo);
     //localStorage,setItem("todoArray", JSON.stringify(todoArray));
+    storeArray();
 }
 
 // Switch date to MM/DD/YYYY
