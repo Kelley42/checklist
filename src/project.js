@@ -4,30 +4,36 @@ let projectArray = [];
 
 // Add initial projects
 function addProjectToArray() {
-    projectArray.push("Personal", "Work");
+    //projectArray.push("Personal", "Work");
+}
+
+function storeProjects () {
+    localStorage.setItem('storedProjects', JSON.stringify(projectArray));
 }
 
 function showProjects() {
-    projectArray.forEach((i) => {
-        const projectTitleContainer = document.createElement("div");
-        projectTitleContainer.classList.add("project-title-container");
+    if (projectArray != []) {
+        projectArray.forEach((i) => {
+            const projectTitleContainer = document.createElement("div");
+            projectTitleContainer.classList.add("project-title-container");
 
-        const projectTitle = document.createElement("li");
-        projectTitle.classList.add("project-title");
-        projectTitle.innerHTML = i;
+            const projectTitle = document.createElement("li");
+            projectTitle.classList.add("project-title");
+            projectTitle.innerHTML = i;
 
-        const editBtn = document.createElement("button");
-        editBtn.classList.add("edit-btn");
-        editBtn.addEventListener("click", (e) => showEditProjectForm(e, i));
+            const editBtn = document.createElement("button");
+            editBtn.classList.add("edit-btn");
+            editBtn.addEventListener("click", (e) => showEditProjectForm(e, i));
 
-        const editImage = document.createElement("img");
-        editImage.src = "./images/pencil-outline.png";
+            const editImage = document.createElement("img");
+            editImage.src = "./images/pencil-outline.png";
 
-        editBtn.appendChild(editImage);
-        projectTitle.appendChild(editBtn);
-        projectTitleContainer.appendChild(projectTitle);
-        projectLinksContainer.appendChild(projectTitleContainer);
-    })
+            editBtn.appendChild(editImage);
+            projectTitle.appendChild(editBtn);
+            projectTitleContainer.appendChild(projectTitle);
+            projectLinksContainer.appendChild(projectTitleContainer);
+        })
+    }
 
     showProjectDropdown();
 }
@@ -61,6 +67,9 @@ function deleteProject(i) {
     if (index !== -1) {
         projectArray.splice(index, 1);
     }
+
+    storeProjects();
+
     resetProjectForm();
     saveProjectBtn.removeEventListener("click", () => editProject(i));
 }
@@ -90,6 +99,8 @@ function showProjectDropdown() {
 function saveProject() {
     projectArray.push(newProjectTitle.value);
     //localStorage,setItem("projectArray", JSON.stringify(projectArray));
+    storeProjects();
+
     refreshProjects();
 }
 
@@ -102,6 +113,8 @@ function editProject(i) {
         projectArray[index] = projectTitle.innerHTML;
     }
     
+    storeProjects();
+
     // Change todo projects to reflect new project title
     const newTitle = newProjectTitle.value;
     editTodoProject(currentTitle, newTitle);

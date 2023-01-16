@@ -26,9 +26,7 @@ function storeArray () {
 function showTodos() {
     //todoArray = checkForArray();
     //console.log('retrievedArrray: ', todoArray)
-    if (todoArray == []) {
-        //do something
-    } else {
+    if (todoArray != []) {
         todoArray.forEach((item) => { 
             // Determine which project selected 
             if (currentClick.whichProject == "Inbox") {
