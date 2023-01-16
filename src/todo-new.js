@@ -6,52 +6,59 @@ let currentItem;
 
 function addTodoToArray() {
     // Add initial todos
-    const taskOne = Task("not done", "run", "run description", "11/12/2022", "Low", "Inbox", "2022-11-12");
-    const taskTwo = Task("not done", "walk", "walk description", "11/14/2022", "Medium", "Inbox", "2022-11-14");
-    const taskThree = Task("not done", "hike", "hiking", "11/15/2022", "High", "Inbox", "2022-11-15");
-    const taskFour = Task("not done", "play", "playing", "11/16/2022", "Low", "Personal", "2022-11-16");
-    const taskFive = Task("not done", "work", "working", "11/23/2022", "High", "Work", "2022-11-23");
-    todoArray.push(taskOne, taskTwo, taskThree, taskFour, taskFive);
-    storeArray();
+    // const taskOne = Task("not done", "run", "run description", "11/12/2022", "Low", "Inbox", "2022-11-12");
+    // const taskTwo = Task("not done", "walk", "walk description", "11/14/2022", "Medium", "Inbox", "2022-11-14");
+    // const taskThree = Task("not done", "hike", "hiking", "11/15/2022", "High", "Inbox", "2022-11-15");
+    // const taskFour = Task("not done", "play", "playing", "11/16/2022", "Low", "Personal", "2022-11-16");
+    // const taskFive = Task("not done", "work", "working", "11/23/2022", "High", "Work", "2022-11-23");
+    // todoArray.push(taskOne, taskTwo, taskThree, taskFour, taskFive);
+    // storeArray();
 }
 
 function storeArray () {
     localStorage.setItem('storedTodoArray', JSON.stringify(todoArray));
 }
 
+// function checkForArray() {
+//     return JSON.parse(localStorage.getItem('storedTodoArray'));
+// }
+
 function showTodos() {
-    todoArray = JSON.parse(localStorage.getItem('storedTodoArray'));
-    console.log('retrievedArrray: ', todoArray)
+    //todoArray = checkForArray();
+    //console.log('retrievedArrray: ', todoArray)
+    if (todoArray == []) {
+        //do something
+    } else {
+        todoArray.forEach((item) => { 
+            // Determine which project selected 
+            if (currentClick.whichProject == "Inbox") {
+                // Only show "not done" and inbox todos
+                if (item.status == "not done" && item.location == "Inbox") {
+                    displayTodo(item);
+                }  
+            } else {
+                // Only show "not done" and not-inbox todos
+                if (item.status == "not done" && item.location == currentClick.whichProject) {
+                    displayTodo(item);
+                }  
+            }
 
-    todoArray.forEach((item) => { 
-        // Determine which project selected 
-        if (currentClick.whichProject == "Inbox") {
-            // Only show "not done" and inbox todos
-            if (item.status == "not done" && item.location == "Inbox") {
-                displayTodo(item);
-            }  
-        } else {
-            // Only show "not done" and not-inbox todos
-            if (item.status == "not done" && item.location == currentClick.whichProject) {
-                displayTodo(item);
-            }  
-        }
-
-        // Determine which date tab selected
-        if (currentClick.whichDate == "Today") {
-            // Only show "not done" and today todos
-            const today = getTodayDate();
-            if (item.status == "not done" && item.date == today) {
-                displayTodo(item);
-            }  
-        } else if (currentClick.whichDate == "Week") {
-            // Only show "not done" and this week's todos
-            const thisweek = getWeekDates();
-            if (item.status == "not done" && thisweek.includes(item[3])) {
-                displayTodo(item);
-            }  
-        }
-    })
+            // Determine which date tab selected
+            if (currentClick.whichDate == "Today") {
+                // Only show "not done" and today todos
+                const today = getTodayDate();
+                if (item.status == "not done" && item.date == today) {
+                    displayTodo(item);
+                }  
+            } else if (currentClick.whichDate == "Week") {
+                // Only show "not done" and this week's todos
+                const thisweek = getWeekDates();
+                if (item.status == "not done" && thisweek.includes(item[3])) {
+                    displayTodo(item);
+                }  
+            }
+        })
+    }
 };
 
 function displayTodo(item) {
