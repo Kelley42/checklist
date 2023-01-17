@@ -8,10 +8,18 @@ function addProjectToArray() {
 }
 
 function storeProjects () {
-    localStorage.setItem('storedProjects', JSON.stringify(projectArray));
+    if (projectArray.length != 0) {
+        localStorage.setItem('storedProjects', JSON.stringify(projectArray));
+    }
+}
+
+function retrieveProjects() {
+    return JSON.parse(localStorage.getItem('storedProjects'));
 }
 
 function showProjects() {
+    projectArray = retrieveProjects();
+    
     if (projectArray != []) {
         projectArray.forEach((i) => {
             const projectTitleContainer = document.createElement("div");

@@ -16,15 +16,17 @@ function addTodoToArray() {
 }
 
 function storeArray () {
-    localStorage.setItem('storedTodoArray', JSON.stringify(todoArray));
+    if (todoArray.length != 0) {
+        localStorage.setItem('storedTodoArray', JSON.stringify(todoArray));
+    }
 }
 
-// function checkForArray() {
-//     return JSON.parse(localStorage.getItem('storedTodoArray'));
-// }
+function retrieveArray() {
+    return JSON.parse(localStorage.getItem('storedTodoArray'));
+}
 
 function showTodos() {
-    //todoArray = checkForArray();
+    todoArray = retrieveArray();
     //console.log('retrievedArrray: ', todoArray)
     if (todoArray != []) {
         todoArray.forEach((item) => { 
