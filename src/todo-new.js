@@ -441,9 +441,12 @@ function assignProjectTabs() {
             currentClick.whichProject = item.innerText;
             todoTitle.innerHTML = item.innerText;
             reset();
+            //todoItemsContainer.innerHTML = "";
+                
             showTodos();
         });
     });
+    
 }
 
 

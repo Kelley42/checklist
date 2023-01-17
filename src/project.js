@@ -189,7 +189,8 @@ const newProjectTitle = document.querySelector("#new-project-title");
 newProjectTitle.addEventListener("keydown", (e) => {
     if (e.key == "Enter") {
         e.preventDefault();
-        saveProjectBtn.click();
+        // saveProjectBtn.click();
+        saveProject();
     }
 })
 
