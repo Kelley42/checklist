@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Kelley42/checklist/issues"
   },
-  "homepage": "https://github.com/Kelley42/checklist#readme",
+  "homepage": "https://kelley42.github.io/checklist/",
   "devDependencies": {
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
