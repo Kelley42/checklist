@@ -1,6 +1,5 @@
 import { hideAddProjectForm, addProjectToArray, showProjects } from './project.js';
 import { addTodoToArray, hideAddTodoForm, assignProjectTabs, showTodos } from './todo-new.js';
-// import { hideAddProjectForm, addProjectToArray, showProjects, addTodoToArray, hideAddTodoForm, assignProjectTabs, showTodos } from './total-code.js';
 
 // Show/hide navbar
 const navbarContainer = document.querySelector("#navbar-container");
@@ -13,7 +12,6 @@ navbarButton.addEventListener("click", () => {
 window.addEventListener("click", (e) => {
     // Check for outside click, that navbar is already visible, and that form is not open
     if (!navbarContainer.contains(e.target) && !navbarButton.contains(e.target) && navbarContainer.classList.value == "visible" && document.querySelector(".new-project-form").style.display == "none") {
-        console.log(e.key)
         navbarContainer.classList.toggle("visible");
     }
 })
